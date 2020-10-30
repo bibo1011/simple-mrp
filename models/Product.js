@@ -28,9 +28,15 @@ Product.init(
         },
         user_id: {
             type: Datatypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
+                key: 'id'
+            }
+        },
+        part_id: {
+            type: Datatypes.INTEGER,
+            references: {
+                model: 'part',
                 key: 'id'
             }
         }

@@ -29,7 +29,6 @@ User.init(
         },
         product_id: {
             type: Datatypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'post',
                 key: 'id'

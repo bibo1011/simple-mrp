@@ -1,7 +1,6 @@
 const {Model, Datatypes} = require('sequelize');
 const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
-const User = require('./User');
 
 class Part extends Model{}
 
@@ -34,7 +33,15 @@ Part.init(
         quantity: {
             type: Datatypes.INTEGER,
             allowNull: false,
+        },
+        product_id: {
+            type: Datatypes.INTEGER,
+            references: {
+                model: 'product',
+                key: 'id'
+            }
         }
+        
     },
     {
         sequelize,
