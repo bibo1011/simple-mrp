@@ -1,4 +1,4 @@
-const {Model, Datatypes} = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
 const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
 
@@ -28,7 +28,7 @@ User.init(
             }
         },
         product_id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'post',
                 key: 'id'

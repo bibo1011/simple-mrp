@@ -1,4 +1,4 @@
-const {Model, Datatypes} = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
 const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
 
@@ -13,28 +13,28 @@ Product.init(
             autoIncrement: true
         },
         product_name: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,3]
             }
         },
         model: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,3]
             }
         },
         user_id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
             }
         },
         part_id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'part',
                 key: 'id'
