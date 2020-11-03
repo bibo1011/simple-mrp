@@ -13,7 +13,7 @@ Part.init(
             autoIncrement: true
         },
         part_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         part_name: {
@@ -33,13 +33,6 @@ Part.init(
         quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        product_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'product',
-                key: 'id'
-            }
         }
         
     },
