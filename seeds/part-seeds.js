@@ -43,7 +43,7 @@ const partData = [
         quantity: 4,
         product_id: 1
     }
-]
+];
 
 const seedParts = () => Part.bulkCreate(partData);
 
