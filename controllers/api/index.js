@@ -6,6 +6,6 @@ const partRoutes = require('./part-routes');
 
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
-router.use('/part', partRoutes);
+router.use('/parts', partRoutes);
 
 module.exports = router;
