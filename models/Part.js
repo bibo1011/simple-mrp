@@ -1,10 +1,10 @@
-const {Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class Part extends Model{}
 
-User.init(
+Part.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,34 +12,42 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
-        email: {
+        part_number: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        part_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
-            isEmail: true
+                len: [2]
+            }   
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [10]
             }
         },
-        password: {
-            type: DataTypes.STRING,
+        quantity: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            validate: {
-              len: [4]
-            }
         },
         product_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'post',
+                model: 'product',
                 key: 'id'
             }
         }
+        
     },
-    {    
+    {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'
+        modelName: 'part'
     }
 );
-module.exports = User;
+module.exports = Part;
