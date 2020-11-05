@@ -20,13 +20,13 @@ nav a i{
 }
 nav img{
     margin-bottom: 50px;
-    height: 65px;
+    height: 50px;
 }
 nav a{
   text-decoration: none;
   color: white;
   display: block;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 
 nav :hover{
@@ -34,6 +34,7 @@ nav :hover{
 }
 
 .content{
+    
     margin-left: 150px;
     padding-left: 50px;
 }
@@ -48,12 +49,15 @@ nav :hover{
 }
 #part-form{
     position: fixed;
-    top:0;
+    top:20;
+    padding-top: 25px;
     width: 100%;
     height: 100px;
     z-index: +1;
+    display: flexbox;
     background-color: white;
 }
+
 #quantity-input{
     width:100px;
 }
@@ -93,4 +97,39 @@ textarea{
 #part-save{
     display: block;
 }
+.part-action{
+    width: 100px;
+}
+
+.products-box{
+    border: 1px solid black;
+    width: fit-content;
+    text-align: left;
+    padding: 5px 10px;
+    overflow-y: scroll;
+    height: 580px;
+}
+.products-box :hover{
+    cursor: default;
+}
+.products-box ul{
+    margin:0;
+    padding:0;
+    line-height: 6px;
+}
+.products-box li :active{
+    color: blue;
+}
+
+.product{
+    list-style: none;
+}
+.product-info{
+    border: 1px solid black;
+    flex-grow: 5;
+}
+.parts-container{
+    display: flex;
+}
+
 

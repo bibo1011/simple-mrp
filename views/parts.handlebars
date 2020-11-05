@@ -6,30 +6,34 @@
     <input type="text" id="part-name" name ="part-name">
     <label for="description">Description:</label>
     <input type="text" id="description" name ="description">
-    <label for="quantity">quantity:</label>
+    <label for="quantity">Quantity:</label>
     <input type="text" id="quantity" name ="quantity"><br>
 
     <button class="part-add-btn">Add</button>
-    <button class="part-update-btn">Update</button>
-    <button class="part-delete-btn">Delete</button>
-
+    
 </form>
 
 {{!-- <div style="overflow-y:auto;"> --}}
 <table>
+    <col style="width:8%">
+    <col style="width:17%">
+    <col style="width:20%">
+    <col style="width:40%">
+    <col style="width:15%">
+    <th></th>
     <th>Part Number</th>
     <th>Part Name</th>
     <th>Description</th>
     <th>Quantity</th>
     {{#each parts}}
     <tr class="part" data-partNum ={{part-number}} data-partName={{part-name}} data-description={{description}} data-quantity={{quantity}}>
+        <td class = "part-action"><i class="far fa-edit"></i> <i class="far fa-save"></i> <i class="far fa-trash-alt"></i></td>
         <td>{{part_number}}</td>
         <td>{{part_name}}</td>
-        <td><textarea id = "desc-txtarea">{{description}}</textarea></td>
+        <td id = "desc">{{description}}</td>
         <td><input id = "quantity-input" value= {{quantity}}></td>
     </tr>
     {{/each}}
 </table>
 {{!-- </div> --}}
-<button id ="part-save">Save</button>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo tempore illo, vel eos error at fuga asperiores natus magnam minima consectetur ipsum repellat optio ab incidunt neque expedita quisquam. Fuga reiciendis modi consequuntur cum similique hic veritatis perferendis maiores voluptatibus dolore ipsam inventore, ea, provident adipisci? Dolor deleniti laudantium pariatur et iste quam, consequuntur exercitationem ipsam officiis ut provident soluta explicabo excepturi nostrum! Accusantium impedit repudiandae quisquam corporis maxime animi! Doloremque sequi fuga temporibus, placeat fugiat pariatur repudiandae obcaecati recusandae illum similique cupiditate porro sapiente consequuntur consectetur dignissimos expedita excepturi cumque accusantium natus quo amet. Dolore ratione quas fugiat, recusandae a nesciunt sit totam mollitia, vel quia vitae earum aperiam tempore rerum eum expedita, sint ea similique ab reprehenderit enim accusamus eveniet! Omnis a blanditiis quidem incidunt quasi at dolorum reiciendis pariatur molestias itaque ipsum tempora illo, odio similique, cum delectus. Doloribus labore nostrum eligendi est corrupti fugit. Atque nulla nesciunt earum neque debitis quo quaerat rem repellendus perferendis officiis consequatur necessitatibus aperiam, quidem, odio aliquid non sit officia autem deleniti temporibus dolor ut ratione nobis explicabo. Doloremque eum natus quas cumque amet nihil non tempora, et fugit consequatur quae repellat saepe autem modi, sint accusamus eaque placeat blanditiis distinctio quibusdam rem! Itaque blanditiis quam numquam praesentium, possimus libero doloribus facere architecto velit impedit cum excepturi explicabo optio accusamus? Cumque quos odit ratione vel quo dignissimos amet architecto pariatur magni et illum sapiente quae blanditiis, sequi error iste similique excepturi eligendi soluta repudiandae corrupti! Nobis provident fugit ipsam delectus aperiam eaque dicta minima consectetur, incidunt ad architecto iste veritatis, nulla impedit autem nemo illo natus laboriosam fugiat amet fuga cum. Alias labore consequuntur, sunt earum inventore sed exercitationem perferendis perspiciatis officia ut dolore tempore laborum a ipsam facere ea eius ex totam? Quas consectetur eligendi unde sint, ipsam perspiciatis repellendus recusandae esse. Quisquam et repellat officia error asperiores delectus recusandae, non placeat a. Ex sequi at illum iste ut eaque repellendus vel consequuntur doloremque explicabo exercitationem reiciendis autem, eos, tempora, recusandae placeat laudantium molestiae. Ipsum harum non perspiciatis at quisquam dolor labore, dicta odit, adipisci ipsam vero placeat incidunt error dignissimos? Est, odio ea tenetur assumenda laborum, pariatur non sapiente accusamus unde aut autem asperiores aperiam voluptatibus voluptatem quis, libero iste? Quasi quis nam, facere iste nisi laborum distinctio quo quod ducimus necessitatibus aspernatur beatae recusandae ut corrupti ab obcaecati iusto porro quos dolorum? Eius excepturi deserunt voluptatibus atque pariatur.</p>
+
