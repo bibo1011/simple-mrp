@@ -7,15 +7,15 @@ router.get('/', (req, res) => {
     Product.findAll({
         include: [User]
     }).then(data => {
-        const products = data.map(product => product.get({plain: true}))
-        res.render('all-products', {products})
+        const prodData = data.map(product => product.get({plain: true}))
+        res.render('products', {prodData})
     }).catch(err => {
         res.status(500).json(err)
     })
 });
 
 
-router.get('/product/:id', (req, res) => {
+router.get('/products/:id', (req, res) => {
     Product.findByPk(req.params.id, {
        include: [
            User,
@@ -40,6 +40,30 @@ router.get('/product/:id', (req, res) => {
 });
 
 
+router.get('/parts', (req, res) => {
+    Part.findAll({
+       include: [
+        'part_number',
+        'part_name',
+        'description',
+        'quantity', 
+       ] 
+    }).then(data => {
+        if (data === true) {
+            const part = data.get({
+                plain: true
+            })
+
+            res.render('parts', {part})
+        } else {
+            res.status(404).end()
+        }
+    }).catch(err => {
+        res.status(500).json(err)
+    })
+});
+
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/')
@@ -49,13 +73,13 @@ router.get('/login', (req, res) => {
 })
 
 
-router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/')
-        return;
-    }
-    res.render('signup')
-})
+// router.get('/signup', (req, res) => {
+//     if (req.session.loggedIn) {
+//         res.redirect('/')
+//         return;
+//     }
+//     res.render('signup')
+// })
 
 
 // Command to export code
