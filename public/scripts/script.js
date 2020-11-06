@@ -46,4 +46,7 @@ $(".fa-save").on('click', function () {
 })
 
 //delete
+$(".fa-trash-alt").on('click',function(){
+   $(this).parents('tr').remove();
+})
 

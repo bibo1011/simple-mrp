@@ -1,20 +1,41 @@
+<div class="row">
+    <form class="col s12 part-form">
+      <div class="row">
+        <div class="input-field col s4">
+          <label for="part_number">Part Number</label>
+          <input  id="part_number" type="text" class="validate">
+        </div>
+        <div class="input-field col s4">
+          <label for="part_name">Part Name</label>
+          <input id="part_name" type="text" class="validate">
+        </div>
+        <div class="input-field col s4">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="textarea1">Description</label>
+          <textarea id="textarea1" class="materialize-textarea center-align"></textarea>
+        </div>
+      </div>
+        <div class="row">
+        
+      </div>
+      <div class="row">
+        <div class="col s12 right ">
+            <button class="btn waves-effect waves-light submit-btn" type="submit" name="action">Submit
+                <i class="fas fa-paper-plane"></i>
+            </button>
+            {{!-- <a class="waves-effect waves-light btn-large">Save<i class="far fa-save"></i></a> --}}
+        </div>
+      </div>
+    </form>
+  </div>
 
-<form id="part-form">
-    <label for="part-number">Part Number:</label>
-    <input type="text" id="part-number" name ="part-number">
-    <label for="part-name">Part Name:</label>
-    <input type="text" id="part-name" name ="part-name">
-    <label for="description">Description:</label>
-    <input type="text" id="description" name ="description">
-    <label for="quantity">Quantity:</label>
-    <input type="text" id="quantity" name ="quantity"><br>
-
-    <button class="part-add-btn">Add</button>
-    
-</form>
-
-{{!-- <div style="overflow-y:auto;"> --}}
-<table>
+<div >
+<table class = "parts-table" id = "parts-table">
     <col style="width:8%">
     <col style="width:17%">
     <col style="width:20%">
@@ -36,5 +57,5 @@
     </tr>
     {{/each}}
 </table>
-{{!-- </div> --}}
+</div>
 
