@@ -35,12 +35,30 @@ $(".fa-save").on('click', function () {
       let quantityField = $(this).parent().siblings('.quantity');
       let description = $(this).parent().siblings('.desc').children('.descText').val();//updated description
       let quantity = $(this).parent().siblings('.quantity').children('.quantityNumber').val();//updated quantity
+      let id = $(this).parent().siblings('.part-number').children('#id').val();//updated quantity
+      console.log(id);
+      console.log("meat");
       //update descField
       descField.empty();
       descField.html(description);
       //update quantityField
+      var partInfo ={
+         description: description,
+         quantity: quantity,
+         id: parseInt(id)
+      }
       quantityField.empty();
-      quantityField.html(quantity)
+      quantityField.html(quantity);
+      //update database
+      $.ajax({
+         method: "PUT",
+         url: `/parts`,
+         data: partInfo
+         
+      })
+      .then(data=>{
+         //location.reload();
+      })
    }
 
 })

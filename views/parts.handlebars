@@ -49,8 +49,8 @@
     {{#each parts}}
     <tr class="part" data-partNum ={{part-number}} data-partName={{part-name}} data-description={{description}} data-quantity={{quantity}}>
         <td class = "part-action"><i class="far fa-edit"></i> <i class="far fa-save"></i> <i class="far fa-trash-alt"></i></td>
-        <td>{{part_number}}</td>
-        <td>{{part_name}}</td>
+        <td class = "part-number"><input type="hidden" name="id" id="id" value="{{id}}">{{part_number}}</td>
+        <td class = "part-name">{{part_name}}</td>
         <td class = "desc">{{description}}</td>
         <td class = "quantity">{{quantity}}</td>
         

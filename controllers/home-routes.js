@@ -43,14 +43,15 @@ router.get('/products/:id', (req, res) => {
 router.get('/parts', (req, res) => {
     Part.findAll({
        attributes: [
+           'id',
         'part_number',
         'part_name',
         'description',
         'quantity' 
        ] 
     })
-    .then(data => {
-            const parts = data.map(part =>part.get({
+    .then(dbPostData => {
+            const parts = dbPostData.map(part =>part.get({
                 plain: true
             }));
             console.log(parts);
@@ -61,6 +62,29 @@ router.get('/parts', (req, res) => {
             res.status(500).json(err);
           });
 });
+
+router.put( '/parts', (req, res)=>{
+    console.log(req.body);
+    Part.update(
+        {
+            description: req.body.description,
+            quantity: req.body.quantity
+        },
+        {
+            where:{
+                id:req.body.id
+            }
+        }
+    )
+    .then(dbPostData =>{
+        console.log(dbPostData);
+        res.json('/');
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+})
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {

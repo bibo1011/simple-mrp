@@ -20,14 +20,14 @@ Part.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [2]
+                len: [0,30]
             }   
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [10]
+                len: [0,30]
             }
         },
         quantity: {
