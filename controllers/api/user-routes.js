@@ -66,7 +66,7 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user with that email address!' });
             return;
         }
-        // // Verify user
+        // Verify user
         const validPassword = dbUserData.checkPassword(req.body.password);
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
@@ -79,6 +79,10 @@ router.post('/login', (req, res) => {
         
             res.json({ user: dbUserData, message: 'You are now logged in!' });
         });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 router.post('/logout', (req, res) => {
