@@ -43,24 +43,49 @@ router.get('/products/:id', (req, res) => {
 router.get('/parts', (req, res) => {
     Part.findAll({
        attributes: [
-           'id',
         'part_number',
         'part_name',
         'description',
         'quantity' 
        ] 
     })
-    .then(dbPostData => {
-            const parts = dbPostData.map(part =>part.get({
-                plain: true
-            }));
+    .then(dbPartData => {
+            // const parts = dbPostData.map(part =>part.get({
+            //     plain: true
+            // }));
+            const parts={
+                parts:dbPartData
+            }
             console.log(parts);
-            res.render('parts', {parts})
+            res.render('parts', parts)
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
           });
+});
+
+router.post('/parts', (req, res) => {
+    Part.create({
+      part_number: req.body.part_number,
+      part_name: req.body.part_name,
+      description: req.body.description,
+      quantity: req.body.quantity
+    })
+    .then(dbPartData =>{
+        console.log ("======================================================================");
+        console.log(dbPartData)
+        // if(!dbPartData.isNewRecord){
+        //     console.log("correct")
+        // }
+        console.log ("======================================================================");
+        res.json(dbPartData);
+    })
+        
+    .catch(err => {
+        console.log(err.parent.errno);
+        res.send({err:"Duplicate Entry"});
+    });
 });
 
 router.put( '/parts', (req, res)=>{
@@ -72,19 +97,36 @@ router.put( '/parts', (req, res)=>{
         },
         {
             where:{
-                id:req.body.id
+                part_number:req.body.part_number
             }
         }
     )
     .then(dbPostData =>{
         console.log(dbPostData);
-        res.json('/');
+        res.json(dbPostData);
     })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
 })
+
+router.delete('/parts', (req, res)=>{
+    Part.destroy({
+        where:{
+            part_number:req.body.part_number
+        }
+    }
+    )
+    .then(dbPostData =>{
+        console.log(dbPostData);
+        res.json(dbPostData);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {

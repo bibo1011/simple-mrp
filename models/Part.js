@@ -6,13 +6,14 @@ class Part extends Model{}
 
 Part.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
         part_number: {
+            primaryKey:true,
             type: DataTypes.STRING,
             allowNull: false
         },

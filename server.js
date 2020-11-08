@@ -19,7 +19,7 @@ app.use(require('./controllers/'));
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',//specifies main.handlebars as the default layout
     runtimeOptions:{//Helps avoid runtime issues
-        allowProtoProperties: true,
+        allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
     }
 }))

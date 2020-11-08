@@ -1,3 +1,6 @@
+body{
+    overflow-y: hidden;
+}
 nav{
     padding-top: 10px;
     margin: 0;
@@ -33,6 +36,10 @@ nav :hover{
     color: white;
 }
 
+/* .parts-content{
+    height: 300px;
+} */
+
 .content{
     
     margin-left: 150px;
@@ -48,48 +55,62 @@ nav :hover{
     left: 0;
     width: 150px;
 }
-.part-form{
-    position: sticky;
-    top: 0px;
+.parts-form-container{
+    height: 250px;
+    background-color: white;
+    padding-top: 25px;
+}
+.parts-form{
+    /* position: sticky;
+    top: 25px; */
     padding-top: 25px;
     /* width: 100%; */
-    /* height: 100px; */
+    /* height: 125px; */
     /* z-index: +1; */
     /* display: flexbox; */
     background-color: white;
 }
 
-#part-form input{
+/* #part-form input{
     border: 0px;
     border-bottom: 1px solid grey;
-}
+} */
 #quantity-input{
     width:100px;
 }
-table{
-    border-collapse: collapse;
+.parts-table-container{
+    top: 250px;
+    height: 200px;
+    overflow-y: auto;
+}
+.head{
+    background-color: gray;
+}
+.parts-table-container table {
     width: 100%;
-    position: relative;
-    /* top:150px; */
-    overflow-y: scroll;
+    table-layout: fixed;
 }
 
-th{
-    position: sticky;
-    top: 0px;
-    background-color: grey;
-}
- th, td {
+/* table{
+    border-collapse: collapse;
+     width: 100%;
+    position: relative;
+    top:250px; 
+    table-layout: fixed;
+    
+} */
+ .parts-table td {
     border: 1px solid black;
+    height: 60px;
     padding: 5px 10px;
     text-align: left;
   }
 
-tr:nth-child(even) {
+.parts-table tr:nth-child(even) {
     background-color: #eee;
   }
 
-tr:nth-child(odd) {
+.parts-table tr:nth-child(odd) {
     background-color: #fff;
   }
 /* tr:hover{
