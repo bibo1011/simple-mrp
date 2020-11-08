@@ -26,6 +26,7 @@ $(".product").on("click", function () {
          quantityInput.addClass('quantityNumber');
          quantityField.empty();
          quantityField.append(quantityInput);
+         // console.log("hey")
          // M.CharacterCounter.init($('textarea.descText'));
    }
   
