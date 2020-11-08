@@ -15,20 +15,24 @@ Part.init(
         part_number: {
             primaryKey:true,
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate:{
+                len:[10,10]
+            }
         },
         part_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
-                len: [0,30]
+                len: [1,30]
             }   
         },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0,30]
+                len: [1,30]
             }
         },
         quantity: {

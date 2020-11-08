@@ -80,8 +80,9 @@ nav :hover{
 }
 .parts-table-container{
     top: 250px;
-    height: 200px;
+    height: 450px;
     overflow-y: auto;
+    width: 100%;
 }
 .head{
     background-color: gray;

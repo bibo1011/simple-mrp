@@ -47,7 +47,11 @@ router.get('/parts', (req, res) => {
         'part_name',
         'description',
         'quantity' 
-       ] 
+       ] ,
+       order:[
+           ['part_number', 'ASC']
+        ]
+       
     })
     .then(dbPartData => {
             // const parts = dbPostData.map(part =>part.get({
@@ -125,6 +129,35 @@ router.delete('/parts', (req, res)=>{
     .catch(err=>{
         console.log(err);
         res.status(500).json(err)
+    });
+});
+
+//========================================================
+//Product routes
+//========================================================
+router.get('/products', (req, res) => {
+    Product.findAll({
+        attributes: [
+            'id',
+            'product_name',
+            'model',
+            'created_at'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['email']
+            },
+            {
+                model: Part,
+                attributes: ['part_number', 'part_name', 'description', 'quantity']
+            }
+        ]
+    })
+    .then(dbProductData => res.render('products',dbProductData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 

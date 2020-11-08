@@ -12,17 +12,17 @@ ProductTag.init(
             autoIncrement: true
         },
         product_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             references: {
                 model: 'product',
                 key: 'id'
             }
         },
-        part_id: {
-            type: DataTypes.INTEGER,
+        part_number: {
+            type: DataTypes.STRING,
             references: {
                 model: 'part',
-                key: 'id'
+                key: 'part_number'
             }
         }
     },
