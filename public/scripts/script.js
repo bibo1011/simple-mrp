@@ -1,5 +1,5 @@
 $(document).ready(function () {
-      $('form').material_select();
+      // $('form').material_select();
   
       // for HTML5 "required" attribute
       $("select[required]").css({
@@ -128,11 +128,12 @@ $(document).ready(function () {
    //===================================================
    // Create new part on submit of form
    //===================================================
-   $(".submit-btn").on('click', function (event) {
-      event.preventDefault();
-         // if($('#part-form').validate()){
-         //    console.log("I'm in")
-         // }
+   // $(".submit-btn").on('click', function (event) {
+   $("#part-form").on('submit', function (event) {
+      // event.preventDefault();
+         
+            console.log("I'm in")
+         
          var partInfo = { 
             part_name: $("#part_name").val(),
             part_number: $("#part_number").val(),

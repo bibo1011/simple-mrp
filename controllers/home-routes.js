@@ -155,7 +155,10 @@ router.get('/products', (req, res) => {
             }
         ]
     })
-    .then(dbProductData => res.render('products',dbProductData))
+    .then(dbProductData =>{
+        console.log (dbProductData);
+        res.render('products',{products:dbProductData})
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
