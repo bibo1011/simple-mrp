@@ -21,6 +21,7 @@ app.engine('handlebars', exphbs({
     runtimeOptions:{//Helps avoid runtime issues
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
+        // query: {raw: true} 
     }
 }))
 

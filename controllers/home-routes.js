@@ -137,6 +137,7 @@ router.delete('/parts', (req, res)=>{
 //========================================================
 router.get('/products', (req, res) => {
     Product.findAll({
+        raw:true,
         attributes: [
             'id',
             'product_name',

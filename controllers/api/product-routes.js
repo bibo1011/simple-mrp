@@ -3,6 +3,7 @@ const { User, Product, Part, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
     Product.findAll({
+        raw:true,
         attributes: [
             'id',
             'product_name',

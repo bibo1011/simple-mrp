@@ -5,7 +5,7 @@ const ProductTag = require('./ProductTag');
 
 User.hasMany(Product);
 Product.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'user_email',
 });
 Product.belongsToMany(Part,{
     through: ProductTag,
@@ -13,7 +13,7 @@ Product.belongsToMany(Part,{
 } );
 Part.belongsToMany(Product, {
     through: ProductTag,
-    foreignKey: 'part_id'
+    foreignKey: 'part_number'
 });
 
 module.exports = {User, Product, Part, ProductTag};

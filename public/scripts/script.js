@@ -1,13 +1,13 @@
 $(document).ready(function () {
-      // $('select').material_select();
+      $('form').material_select();
   
-      // // for HTML5 "required" attribute
-      // $("select[required]").css({
-      //   display: "inline",
-      //   height: 0,
-      //   padding: 0,
-      //   width: 0
-      // });
+      // for HTML5 "required" attribute
+      $("select[required]").css({
+        display: "inline",
+        height: 0,
+        padding: 0,
+        width: 0
+      });
 
 
    $('textarea#description, input#part_name, input#part_number').characterCounter();
