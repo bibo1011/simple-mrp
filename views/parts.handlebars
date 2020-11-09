@@ -1,31 +1,67 @@
-<div class="row part-form">
-    <form class="col s12 ">
+ {{!-- Alert Modal --}}
+
+  <!-- Modal Structure -->
+  <section class="err-modal">
+  <div id="err-modal" class="modal">
+    <div class="modal-content">
+      <h4 id="info-modal-heading">Duplicate Entry</h4>
+      <p id="info-modal-content">A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  </section>
+
+
+
+  {{!-- Circular loader --}}
+  {{!-- <section class="load-modal">
+  <div id="load-modal" class="modal">
+  <div class="modal-content">
+  <div class="preloader-wrapper big active" id="loader">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+      </div>
+      </div>
+  </section> --}}
+
+
+{{!-- Part Form  --}}
+
+<div class="parts-content">
+<div class="row parts-form-container">
+    <form class="col s12 part-form" id="part-form">
       <div class="row">
         <div class="input-field col s4">
-          <label for="part_number">Part Number</label>
-          <input  id="part_number" type="text" class="validate">
+          <label for="part_number">Part Number</label> 
+          <input  id="part_number" required="" aria-required="true" data-length="10" minlength="10" maxlength="10" type="text" class="validate">
         </div>
         <div class="input-field col s4">
-          <label for="part_name">Part Name</label>
-          <input id="part_name" type="text" class="validate">
+          <label for="part_name">Part Name</label> 
+          <input id="part_name" required="" aria-required="true" data-length="10" type="text" class="validate">
         </div>
         <div class="input-field col s4">
-          <label for="quantity">Quantity</label>
-          <input id="quantity" type="number" class="validate">
+          <label for="quantity">Quantity</label> 
+          <input id="quantity" data-length="10" type="number" value="1" class="validate">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <label for="textarea1">Description</label>
-          <textarea id="textarea1" class="materialize-textarea center-align"></textarea>
+          <textarea id="description" class="materialize-textarea center-align validate" data-length='30'></textarea>
         </div>
       </div>
-        <div class="row">
-        
-      </div>
       <div class="row">
-        <div class="col s12 right ">
-            <button class="btn waves-effect waves-light submit-btn" type="submit" name="action">Submit
+        <div class="col s12">
+            <button class="btn waves-effect waves-light submit-btn" id="part-form-submit" type="submit" name="action">Submit
                 <i class="fas fa-paper-plane"></i>
             </button>
             {{!-- <a class="waves-effect waves-light btn-large">Save<i class="far fa-save"></i></a> --}}
@@ -34,28 +70,45 @@
     </form>
   </div>
 
-<div >
+  {{!-- intermidiate loader --}}
+ {{!-- <div class="progress .hide" id="submit part">
+      <div class="indeterminate"></div>
+  </div> --}}
+
+{{!-- Parts Table --}}
+<div class="parts-table-container">
+    <table class="head">
+        <col style="width:8%">
+    <col style="width:17%">
+    <col style="width:20%">
+    <col style="width:40%">
+    <col style="width:15%">
+        <tr>
+            <td></td>
+            <td>Part Number</td>
+            <td>Part Name</td>
+            <td>Description</td>
+            <td>Quantity</td>
+        </tr>
+    </table>
 <table class = "parts-table" id = "parts-table">
     <col style="width:8%">
     <col style="width:17%">
     <col style="width:20%">
     <col style="width:40%">
     <col style="width:15%">
-    <th></th>
-    <th>Part Number</th>
-    <th>Part Name</th>
-    <th>Description</th>
-    <th>Quantity</th>
+    
     {{#each parts}}
     <tr class="part" data-partNum ={{part-number}} data-partName={{part-name}} data-description={{description}} data-quantity={{quantity}}>
         <td class = "part-action"><i class="far fa-edit"></i> <i class="far fa-save"></i> <i class="far fa-trash-alt"></i></td>
-        <td>{{part_number}}</td>
-        <td>{{part_name}}</td>
+        <td class = "part-number">{{part_number}}</td>
+        <td class = "part-name">{{part_name}}</td>
         <td class = "desc">{{description}}</td>
         <td class = "quantity">{{quantity}}</td>
         
     </tr>
     {{/each}}
 </table>
+</div>
 </div>
 

@@ -15,7 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Sets Handlebars as the default template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main',//specifies main.handlebars as the default layout
+    runtimeOptions:{//Helps avoid runtime issues
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+        // query: {raw: true}  }));
 app.set('view engine', 'handlebars');
 // Sets up the sessions with the 'secret', 'resave', 'saveUninitialized' options
 app.use(
@@ -33,7 +37,9 @@ app.use(
 // turn on routes
 app.use(require('./controllers/'));
 
+
 // turn on connection to db and server
+
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
