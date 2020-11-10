@@ -15,11 +15,12 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/products');
+        document.location.replace('/parts');
+        console.log('you are in')
       } else {
         alert(response.statusText);
       }
     }
 }
   
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+document.querySelector('#login-form').addEventListener('submit', loginFormHandler);

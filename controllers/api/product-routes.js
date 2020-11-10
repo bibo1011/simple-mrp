@@ -3,12 +3,13 @@ const { User, Product, Part, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
     Product.findAll({
-        raw:true,
+        raw: false,
         attributes: [
             'id',
             'product_name',
             'model',
-            'created_at'
+            'created_at',
+            // 'user_id'
         ],
         include: [
             {
@@ -29,13 +30,16 @@ router.get('/', (req, res) => {
 });
 router.get('/:id', (req, res) => {
     Product.findOne({
+        raw: false,
         where: {
           id: req.params.id
         },
         attributes: [
             'id',
             'product_name',
-            'model'
+            'model',
+            'created_at',
+            // 'user_id'
         ],
         include: [
             {

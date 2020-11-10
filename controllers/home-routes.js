@@ -8,7 +8,7 @@ const { Part, Product, User } = require('../models');
 //         include: [User]
 //     }).then(data => {
 //         const prodData = data.map(product => product.get({plain: true}))
-//         res.render('products', {prodData})
+//         res.render('products', prodData)
 //     }).catch(err => {
 //         res.status(500).json(err)
 //     })
@@ -137,7 +137,7 @@ router.delete('/parts', (req, res)=>{
 //========================================================
 router.get('/products', (req, res) => {
     Product.findAll({
-        raw:true,
+        raw: false,
         attributes: [
             'id',
             'product_name',
@@ -157,7 +157,7 @@ router.get('/products', (req, res) => {
     })
     .then(dbProductData =>{
         console.log (dbProductData);
-        res.render('products',{products:dbProductData})
+        res.render('products', {products: dbProductData})
     })
     .catch(err => {
         console.log(err);
@@ -165,11 +165,11 @@ router.get('/products', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/')
-        return;
-    }
+router.get('/', (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/')
+    //     return;
+    // }
     res.render('login')
 })
 

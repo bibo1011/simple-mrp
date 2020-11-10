@@ -1,5 +1,4 @@
 const {Model, DataTypes} = require('sequelize');
-const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Product extends Model {}
@@ -26,11 +25,11 @@ Product.init(
                 len: [1,30]
             }
         },
-        user_email: {
+        user_id: {
             type: DataTypes.STRING,
             references: {
                 model: 'user',
-                key: 'email'
+                key: 'id'
             }
         }
 
