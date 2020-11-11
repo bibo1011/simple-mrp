@@ -3,18 +3,6 @@ const router = require('express').Router();
 const { Part, Product, User } = require('../models');
 
 // REST API HTTP requests
-<<<<<<< HEAD
-router.get('/', (req, res) => {
-    Product.findAll({
-        include: [User]
-    }).then(data => {
-        const prodData = data.map(product => product.get({plain: true}))
-        res.render('products', {prodData})
-    }).catch(err => {
-        res.status(500).json(err)
-    })
-});
-=======
 // router.get('/', (req, res) => {
 //     Product.findAll({
 //         include: [User]
@@ -25,7 +13,6 @@ router.get('/', (req, res) => {
 //         res.status(500).json(err)
 //     })
 // });
->>>>>>> 7dc0e44fd40cb32a0bc65c8831a919d1fbaa2526
 
 
 router.get('/products/:id', (req, res) => {
@@ -55,29 +42,6 @@ router.get('/products/:id', (req, res) => {
 
 router.get('/parts', (req, res) => {
     Part.findAll({
-<<<<<<< HEAD
-       include: [
-        'part_number',
-        'part_name',
-        'description',
-        'quantity', 
-       ] 
-    }).then(data => {
-        if (data === true) {
-            const part = data.get({
-                plain: true
-            })
-
-            res.render('parts', {part})
-        } else {
-            res.status(404).end()
-        }
-    }).catch(err => {
-        res.status(500).json(err)
-    })
-});
-
-=======
        attributes: [
         'part_number',
         'part_name',
@@ -200,7 +164,6 @@ router.get('/products', (req, res) => {
         res.status(500).json(err);
     });
 });
->>>>>>> 7dc0e44fd40cb32a0bc65c8831a919d1fbaa2526
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
