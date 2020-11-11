@@ -1,3 +1,9 @@
+// Hides sidebar with options when on the login page
+if (window.location.hostname === 'https://localhost:3001/') {
+  $('#sidebar').addClass('hide');
+}
+
+
 async function loginFormHandler(event) {
     event.preventDefault();
   
