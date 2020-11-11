@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { User, Product, Part } = require('../../models');
+const { User, Product, Part, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
     Product.findAll({
+        raw:true,
         attributes: [
             'id',
             'product_name',
@@ -12,11 +13,11 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['id', 'email']
+                attributes: ['email']
             },
             {
                 model: Part,
-                attributes: ['id', 'part_number', 'part_name', 'description', 'quantity']
+                attributes: ['part_number', 'part_name', 'description', 'quantity']
             }
         ]
     })
@@ -39,11 +40,11 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['id', 'email']
+                attributes: ['email']
             },
             {
                 model: Part,
-                attributes: ['id', 'part_number', 'part_name', 'description', 'quantity']
+                attributes: ['part_number', 'part_name', 'description', 'quantity']
             }
         ]
     })
@@ -60,13 +61,34 @@ router.get('/:id', (req, res) => {
     });
 });
 router.post('/', (req, res) => {
+    /* req.body should look like this....
+        {
+            product_name: "Mercedez",
+            model: "GLA 450",
+            user_email: "hameed@ucbmotors.com",
+            part_numbers:['20200-0002','20200-0006','20200-0004','20200-0013','20200-0012']
+        }
+        */
     Product.create({
       product_name: req.body.product_name,
       model: req.body.model,
-      user_id: req.body.description,
-      part_id: req.body.part_id
+      user_email: req.body.user_email
     })
-    .then(dbProductData => res.json(dbProductData))
+    .then(ProductData =>{
+        if(req.body.part_number.length){
+        const productPartsArr = req.body.part_numbers.map((part_number) =>{
+            return{
+                product_id: ProductData.id,
+                part_number: part_number,
+            };
+        });
+        return ProductTag.bulkCreate(productPartsArr);
+    }
+    res.status(200).json(ProductData);
+    })
+    .then((productParts) =>{
+        res.status(200).json(productParts);
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

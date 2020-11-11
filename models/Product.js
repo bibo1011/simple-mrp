@@ -16,21 +16,21 @@ Product.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,3]
+                len: [1,30]
             }
         },
         model: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,3]
+                len: [1,30]
             }
         },
-        user_id: {
-            type: DataTypes.INTEGER,
+        user_email: {
+            type: DataTypes.STRING,
             references: {
                 model: 'user',
-                key: 'id'
+                key: 'email'
             }
         }
 

@@ -3,6 +3,7 @@ const router = require('express').Router();
 const { Part, Product, User } = require('../models');
 
 // REST API HTTP requests
+<<<<<<< HEAD
 router.get('/', (req, res) => {
     Product.findAll({
         include: [User]
@@ -13,6 +14,18 @@ router.get('/', (req, res) => {
         res.status(500).json(err)
     })
 });
+=======
+// router.get('/', (req, res) => {
+//     Product.findAll({
+//         include: [User]
+//     }).then(data => {
+//         const prodData = data.map(product => product.get({plain: true}))
+//         res.render('products', {prodData})
+//     }).catch(err => {
+//         res.status(500).json(err)
+//     })
+// });
+>>>>>>> 7dc0e44fd40cb32a0bc65c8831a919d1fbaa2526
 
 
 router.get('/products/:id', (req, res) => {
@@ -42,6 +55,7 @@ router.get('/products/:id', (req, res) => {
 
 router.get('/parts', (req, res) => {
     Part.findAll({
+<<<<<<< HEAD
        include: [
         'part_number',
         'part_name',
@@ -63,6 +77,130 @@ router.get('/parts', (req, res) => {
     })
 });
 
+=======
+       attributes: [
+        'part_number',
+        'part_name',
+        'description',
+        'quantity' 
+       ] ,
+       order:[
+           ['part_number', 'ASC']
+        ]
+       
+    })
+    .then(dbPartData => {
+            // const parts = dbPostData.map(part =>part.get({
+            //     plain: true
+            // }));
+            const parts={
+                parts:dbPartData
+            }
+            console.log(parts);
+            res.render('parts', parts)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+});
+
+router.post('/parts', (req, res) => {
+    Part.create({
+      part_number: req.body.part_number,
+      part_name: req.body.part_name,
+      description: req.body.description,
+      quantity: req.body.quantity
+    })
+    .then(dbPartData =>{
+        console.log ("======================================================================");
+        console.log(dbPartData)
+        // if(!dbPartData.isNewRecord){
+        //     console.log("correct")
+        // }
+        console.log ("======================================================================");
+        res.json(dbPartData);
+    })
+        
+    .catch(err => {
+        console.log(err.parent.errno);
+        res.send({err:"Duplicate Entry"});
+    });
+});
+
+router.put( '/parts', (req, res)=>{
+    console.log(req.body);
+    Part.update(
+        {
+            description: req.body.description,
+            quantity: req.body.quantity
+        },
+        {
+            where:{
+                part_number:req.body.part_number
+            }
+        }
+    )
+    .then(dbPostData =>{
+        console.log(dbPostData);
+        res.json(dbPostData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+})
+
+router.delete('/parts', (req, res)=>{
+    Part.destroy({
+        where:{
+            part_number:req.body.part_number
+        }
+    }
+    )
+    .then(dbPostData =>{
+        console.log(dbPostData);
+        res.json(dbPostData);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
+
+//========================================================
+//Product routes
+//========================================================
+router.get('/products', (req, res) => {
+    Product.findAll({
+        raw:true,
+        attributes: [
+            'id',
+            'product_name',
+            'model',
+            'created_at'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['email']
+            },
+            {
+                model: Part,
+                attributes: ['part_number', 'part_name', 'description', 'quantity']
+            }
+        ]
+    })
+    .then(dbProductData =>{
+        console.log (dbProductData);
+        res.render('products',{products:dbProductData})
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+>>>>>>> 7dc0e44fd40cb32a0bc65c8831a919d1fbaa2526
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
