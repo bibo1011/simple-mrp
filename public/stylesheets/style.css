@@ -1,36 +1,83 @@
 body{
     overflow-y: hidden;
+    margin-top: 10px;
+    border: 5px 10px;
+    padding-left: 0px;
 }
-nav{
+.sidebar{
     padding-top: 10px;
-    margin: 0;
+    padding-left: 0px;
     font-size:15px;
     background-image: linear-gradient(to right, black,lightgrey);
     color: white;
-    line-height: 35px;
+    /* line-height: 35px; */
     box-shadow: 12px 12px 20px 1px rgb(24, 23, 23);
     text-align: center;
-    position: fixed;
+    /* position: fixed; */
     /* left: 0; */
-    width: 150px;
+    width: 200px;
     height: 100%;
     overflow: hidden
 
 }
-nav a i{
-    font-size: 30px;
+.sidebar ul {
+    padding-left: 0px;
+}
+ .sidebar li a i{
+    /* text-align: center; */
+    font-size: 3.0em;
+    /* width: 50px; */
+    /* text-decoration: none; */
+    color: white;
+    display: inline;
 
 }
-nav img{
-    margin-bottom: 50px;
-    height: 50px;
+.sidebar li a{
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    display: block;
+   
 }
-nav a{
+.sidebar li{
+    text-align: center;
+     /* padding-bottom: 50px; */
+     display: block;
+     margin-bottom: 50px;
+     height: 80px;
+}
+li.divider{
+    padding-bottom: 50px;
+    height: 1px;
+}
+.logo-view{
+    /* text-align: center; */
+    padding-left: 0px;
+}
+.logo-view img{
+    /* margin-bottom: 50px; */
+    height: 80px;
+    width: auto;
+    display: fixed;
+    bottom: 0;
+    padding-left: 0px;
+}
+.sidenav-trigger{
+    margin-top: 10px;
+    border-top: 10px;
+    display: inline;
+
+}
+.sidenav-trigger i{
+    font-size: 35px;
+    color: black;
+}
+/* nav a{
   text-decoration: none;
   color: white;
   display: block;
   margin-bottom: 50px;
-}
+} */
 
 nav :hover{
     color: white;
@@ -42,7 +89,7 @@ nav :hover{
 
 .content{
     
-    margin-left: 150px;
+    /* margin-left: 0px; */
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -92,14 +139,6 @@ nav :hover{
     table-layout: fixed;
 }
 
-/* table{
-    border-collapse: collapse;
-     width: 100%;
-    position: relative;
-    top:250px; 
-    table-layout: fixed;
-    
-} */
  .parts-table td {
     border: 1px solid black;
     height: 60px;
@@ -114,9 +153,6 @@ nav :hover{
 .parts-table tr:nth-child(odd) {
     background-color: #fff;
   }
-/* tr:hover{
-    
-} */
 
 textarea{
     width: 100%;
@@ -129,23 +165,23 @@ textarea{
     width: 100px;
 }
 
-.products-box{
+.products-list{
     border: 1px solid black;
     width: fit-content;
     text-align: left;
     padding: 5px 10px;
     overflow-y: scroll;
-    height: 580px;
+    height: 200px;
 }
-.products-box :hover{
+.products-list :hover{
     cursor: default;
 }
-.products-box ul{
+.products-list ul{
     margin:0;
     padding:0;
     line-height: 6px;
 }
-.products-box li :active{
+.products-list li :active{
     color: blue;
 }
 
@@ -154,7 +190,8 @@ textarea{
 }
 .product-info{
     border: 1px solid black;
-    flex-grow: 5;
+    height: 100%;
+    /* flex-grow: 5; */
 }
 .parts-container{
     display: flex;

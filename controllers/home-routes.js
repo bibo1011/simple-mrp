@@ -79,16 +79,19 @@ router.post('/parts', (req, res) => {
     .then(dbPartData =>{
         console.log ("======================================================================");
         console.log(dbPartData)
-        // if(!dbPartData.isNewRecord){
-        //     console.log("correct")
-        // }
         console.log ("======================================================================");
-        res.json(dbPartData);
+        //  if(dbPartData.part._options.isNewRecord === false){
+        //     res.send({message:"Duplicate Entry"});
+        // }
+        res.send({messgae: "success"});
     })
-        
     .catch(err => {
-        console.log(err.parent.errno);
-        res.send({err:"Duplicate Entry"});
+        if(err){
+            //console.log(err.parent.errno);
+            console.log(err);
+            res.send({message:"Duplicate Entry"});
+        }
+        
     });
 });
 

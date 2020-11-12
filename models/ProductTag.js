@@ -24,13 +24,19 @@ ProductTag.init(
                 model: 'part',
                 key: 'part_number'
             }
+        },
+        quantity:{
+            type:DataTypes.INTEGER,
+            allowNull: false,
+            
         }
+        
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'product-tag'
+        modelName: 'product_tag'
     }
 );
 module.exports = ProductTag;
