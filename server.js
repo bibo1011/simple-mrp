@@ -19,7 +19,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main',//specifies main.handleb
     runtimeOptions:{//Helps avoid runtime issues
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
-        // query: {raw: true}  }));
+        // query: {raw: true}  }
+        ));
 app.set('view engine', 'handlebars');
 // Sets up the sessions with the 'secret', 'resave', 'saveUninitialized' options
 app.use(
