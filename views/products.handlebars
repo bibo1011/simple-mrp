@@ -1,12 +1,14 @@
+<a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i></a>
 <h1>Products</h1>
 
-<div class="row">
+{{!-- <div class="row">
     <div class="col s3">
-        <div class="row product-list">
-            <div class="col s12" >
-                <ul>
+        <div class="row ">
+            <div class="col s12 products-list" >
+                <ul class="collection">
                     {{#each products}}
-                    <li class="product">
+                    <li class=" collection-item product">
+                        <p>{{id}}</p>
                         <p>{{product_name}}</p>
                     </li>
                     {{/each}}
@@ -15,12 +17,57 @@
         </div>
         <div class="row">
             <div class="col s12 selected-product">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quidem ipsam nesciunt dicta in veniam magnam tempora dolor eius animi. Doloribus, magni cupiditate.
+                {{#each products}}
+                {{#if @first}}
+                <p class="selected-product-info" id="selected-id">Product #: {{id}}</p>
+                <p class="selected-product-info" id="selected-name">Name: {{product_name}}</p>
+                <p class="selected-product-info" id="selected-model">Model: {{model}}</p>
+                {{/if}}
+                {{/each}}
             </div>
         </div>
     </div>
     <div class="col s7 product-info">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad eos sed numquam corporis omnis facilis perspiciatis repellat delectus cumque, quis provident libero mollitia voluptatibus asperiores iure aliquid dignissimos ea ullam quod! Quos, et quae qui est, voluptates consectetur doloribus similique assumenda praesentium consequuntur natus! Accusantium eos quod tenetur totam reiciendis in, veritatis ut temporibus maxime recusandae officia cumque corrupti vel dolor unde sunt quidem ad cupiditate? Reprehenderit aperiam repudiandae placeat! Aut quod assumenda delectus veritatis amet enim dignissimos voluptates blanditiis ea nesciunt et eum aspernatur, modi voluptatem accusantium nisi ratione obcaecati suscipit ex. Corrupti laudantium pariatur mollitia ad minus dolorum, enim non accusantium perferendis dignissimos, labore consequatur beatae harum rerum cumque numquam aut molestiae temporibus laborum, facilis quo voluptate amet. Ipsum cum optio nihil qui excepturi minima, voluptas doloremque ipsa ducimus maiores. Praesentium, consectetur, quos quibusdam cumque enim magnam numquam quisquam eos sequi doloribus illo eveniet adipisci officia voluptatibus! Molestias similique optio, repudiandae, voluptate cupiditate quidem dolorum blanditiis est doloremque animi fugiat at in distinctio mollitia impedit, maiores magnam adipisci quae nulla officiis. Quaerat rem aliquid laborum perspiciatis iusto velit, ratione esse ex. Ab consectetur excepturi praesentium inventore ipsa asperiores cupiditate ut? At doloremque in libero, similique accusantium dolorum, alias facilis praesentium vel minus atque odit dolor voluptate pariatur, officia modi assumenda perspiciatis sint eum sit reiciendis? Dolorem tempora quisquam blanditiis possimus nostrum debitis, perferendis, expedita eum animi nihil neque. Officiis nam omnis consectetur consequatur corporis, debitis inventore aperiam magni repellat saepe beatae obcaecati esse harum voluptates facilis unde repellendus nisi! Esse iure dolorum inventore. Inventore excepturi debitis incidunt doloribus laudantium quasi nemo culpa error autem in unde harum quod omnis distinctio nobis numquam natus libero tenetur minima suscipit ea, quidem perspiciatis sapiente eius! Saepe atque molestiae quia eveniet. Iure, assumenda laboriosam nostrum tenetur, dolore quod ullam fugiat reprehenderit tempore ratione odit atque dolor similique? Quos error exercitationem quisquam repellendus nostrum quia saepe aliquam perferendis sunt. Neque explicabo ipsum quisquam nobis quibusdam delectus, libero laboriosam officia? Eum dolorum culpa exercitationem optio eveniet odio nostrum labore quis totam, esse provident magni amet corporis doloremque vero! Fuga, hic repudiandae. Placeat nobis cumque laudantium voluptas repudiandae vero sed at rerum soluta pariatur facere odio omnis quos eligendi, deserunt maxime voluptates distinctio numquam accusantium corporis quam autem? Laboriosam, quidem veniam inventore facere non eum nisi incidunt, cupiditate impedit repudiandae fugit vel quo libero, similique aspernatur dolores sunt ut consequuntur molestias commodi porro eius cumque doloremque quis? Fugiat sed odio repellendus eius, minus doloremque distinctio nesciunt quos et soluta, quo laboriosam exercitationem quam voluptate, dolorem mollitia nulla. Eius, delectus? Fugit suscipit consectetur, quos qui corrupti autem sit officia incidunt, ducimus voluptatem unde ut explicabo, delectus assumenda porro. Quos dolor ut quam vitae quo necessitatibus explicabo quod fugit obcaecati id delectus, nostrum omnis excepturi quaerat fugiat saepe, culpa adipisci iste assumenda error nobis doloribus qui? Laudantium, ratione molestiae aut voluptatibus eligendi nesciunt sunt omnis assumenda nisi mollitia eveniet tenetur! Iste vitae voluptates perspiciatis ex tempore amet quod fuga voluptatibus recusandae asperiores dolorem, numquam ipsam dolorum commodi debitis labore quasi voluptate possimus necessitatibus, dicta tenetur repellat ab. Iusto non quis quas neque quod assumenda aliquid cumque fuga temporibus ratione, molestiae quam illum, exercitationem rem eum necessitatibus excepturi, obcaecati corporis ea animi magni laudantium. Vitae quaerat animi illo placeat praesentium sed, porro voluptatum molestiae dolorem, quae exercitationem repudiandae neque totam tenetur veniam esse aut veritatis sit rerum atque at cum. In harum nam exercitationem. Hic incidunt eos enim recusandae quod totam voluptate facilis earum atque tenetur nemo rem, in, explicabo perferendis laboriosam debitis dolore mollitia commodi quia deserunt dicta maxime cumque dolorem saepe. Laboriosam incidunt alias consequatur itaque sed illum asperiores, magnam nisi ipsa vitae at omnis deleniti quo? At nam odit quisquam modi voluptatem. Sed velit quidem cum veritatis saepe maxime esse molestiae provident, dolores nesciunt et natus enim consequuntur porro eaque distinctio deserunt nulla illum corrupti quibusdam asperiores praesentium deleniti. Libero fugiat aspernatur perspiciatis animi quod molestias? Voluptate enim voluptates architecto sed perferendis cum alias ratione reiciendis, animi inventore tempore quod dolorum voluptatibus modi voluptas quasi officiis! Laborum expedita quaerat repellendus non vel repellat nemo beatae quisquam debitis corrupti sed quod quis magni, doloremque tenetur, blanditiis rerum neque dolore eligendi vitae veritatis! Ipsa, beatae quam sit consectetur vero eaque distinctio repellendus voluptas quaerat corrupti unde mollitia accusantium voluptate expedita aspernatur labore natus repudiandae molestiae pariatur tempora aliquid praesentium. Excepturi aliquid deleniti placeat cumque perferendis optio repellendus tempora deserunt dicta. Maxime, iusto quo adipisci nisi quasi aperiam tenetur minima accusantium enim repudiandae id ut aut voluptatibus porro natus non placeat, est assumenda minus? Aliquam explicabo error recusandae dolores reiciendis consequatur magnam voluptate, aspernatur quae earum, architecto adipisci id excepturi dicta tempore? Reprehenderit libero porro delectus labore totam aliquid dolore ut tempore voluptatum, maxime, minima iste placeat incidunt quo. Nobis, debitis! Corrupti corporis velit commodi officiis, nisi impedit enim, facilis magni consequatur ex quasi minus repellat molestiae nobis quo ut, nam necessitatibus eveniet distinctio atque porro possimus. Illum porro nam facilis ullam quasi placeat fuga nostrum magni excepturi ipsa vero ea qui voluptas, laboriosam pariatur. Beatae tempore ducimus ab aut obcaecati omnis sed fuga, recusandae deleniti odit voluptatem eum nemo debitis quas tempora magni id adipisci dolorum culpa. Necessitatibus ipsum optio reprehenderit dicta natus, quidem placeat ut sed qui commodi aperiam debitis quasi dolores quisquam quaerat minus ducimus inventore maxime dolor, doloribus, odit neque enim velit? Qui ducimus laboriosam eligendi beatae molestias accusamus officia eos corporis maiores praesentium placeat, sapiente minima dolores voluptatem harum veniam quidem animi vel hic natus sint at sed est. Dolor perferendis iure rerum veritatis consequuntur itaque ducimus corporis possimus exercitationem obcaecati. Non tempore similique, perspiciatis deleniti blanditiis quaerat, inventore quidem minus consequuntur voluptatem culpa magni libero deserunt nihil debitis, aperiam cupiditate itaque repellat atque harum. Sapiente eos eum est cumque. Omnis et quo alias vero placeat possimus eos officiis aperiam culpa quasi qui officia repellendus, eum dolor ea quae nemo nam minus similique obcaecati sit rem dolore ipsam quis. Corrupti commodi, porro, eos deleniti delectus exercitationem, mollitia fuga rerum ut voluptas laboriosam cupiditate?
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>Parts</h4></li>
+    {{#each products}}
+    {{#if @first}}
+    {{#each parts}}
+    <li class="collection-item">
+        <span class="title">Part #: {{part_number}}</span>
+        <p>Description: {{description}}<br>
+           Quantity Needed: {{product_tag.quantity}}
+        </p>
+        
+    </li>
+    {{/each}}
+    {{/if}}
+    {{/each}}
+    </ul>
     </div>
 
-</div>
+</div> --}}
+
+
+
+
+<ul class="collapsible popout">
+    {{#each products}}
+    {{#if @first}}
+    <li class="active">
+    {{/if}}
+    {{#unless @first}}
+        <li>
+    {{/unless}}
+        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}</div>
+        <div class="collapsible-body">
+            <h4>Parts</h4>
+            <ul class="parts-list">
+            {{#each parts}}
+            <li><a class="btn tooltipped" data-position="bottom" data-tooltip={{description}}>{{part_name}} ({{product_tag.quantity}})</a></li>
+            {{/each}}
+            </ul>
+        </div>
+    </li>
+    {{/each}}
+</ul>

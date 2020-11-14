@@ -1,20 +1,18 @@
 $(document).ready(function () {
-      // $('form').material_select();
 
-      // Side Nav initialization
-      $('.sidenav').sidenav();
-  
-      // for HTML5 "required" attribute
-      $("select[required]").css({
-        display: "inline",
-        height: 0,
-        padding: 0,
-        width: 0
-      });
+   // Side Nav initialization
+   $('.sidenav').sidenav();
+   // $('.sidenav').sidenav('open');
+
+   // Tooltip initialization
+   $('.tooltipped').tooltip();
+
+   //collapsible Initialization
+   $('.collapsible').collapsible();
 
 
    $('textarea#description, input#part_name, input#part_number').characterCounter();
-   
+
    // Modal initialization
    $('.modal').modal();
 
@@ -22,15 +20,18 @@ $(document).ready(function () {
    //===============================
    // trigger menu
    //================================
-   $('#sidenav-tirgger').on('click', ()=>{
+   $('#sidenav-tirgger').on('click', () => {
       $('.sidenav').sidenav('open');
    })
-   //=================================
-   //Active product color change
-   //=================================
+   //============================================================
+   //Active product script (color change, display product info) 
+   //============================================================
    $(".product").on("click", function () {
-      $('.product').css("color", "black");
-      $(this).css("color", "blue");
+      //change color of selected product
+      $('.product').removeClass('active');
+      $(this).addClass('active')
+
+
    });
    //=====================================
    //Allow Edit on part row
@@ -61,7 +62,7 @@ $(document).ready(function () {
    //===========================================
    $(".fa-save").on('click', function () {
       if ($(this).parent().siblings('.desc').children().length > 0) {
-        
+
 
          let descField = $(this).parent().siblings('.desc');
          let quantityField = $(this).parent().siblings('.quantity');
@@ -95,7 +96,7 @@ $(document).ready(function () {
                descField.html(description);
                quantityField.empty();
                quantityField.html(quantity);
-               $('#success-modal').modal({dismissible: false});
+               $('#success-modal').modal({ dismissible: false });
                $('#success-modal').modal('open');
                // $('.modal').modal();
                //location.reload();
@@ -111,10 +112,10 @@ $(document).ready(function () {
       const partInfo = {
          part_number: $(this).parent().siblings('.part-number').text()
       }
-         $('#part-number').text(` ${partInfo.part_number}`);
-         $('#confirm-modal').modal({dismissible: false});
-         $('#confirm-modal').modal('open');
-      $('#yes').on('click', function(){
+      $('#part-number').text(` ${partInfo.part_number}`);
+      $('#confirm-modal').modal({ dismissible: false });
+      $('#confirm-modal').modal('open');
+      $('#yes').on('click', function () {
          console.log(partInfo)
          $.ajax({
             method: "delete",
@@ -128,7 +129,7 @@ $(document).ready(function () {
                   console.log(data);
                }
                // location.reload();
-               $('#success-modal').modal({dismissible: false});
+               $('#success-modal').modal({ dismissible: false });
                $('#success-modal').modal('open');
                $(".parts-table").find("input,button,textarea,select").attr("disabled", "enabled");
                $(this).parents('tr').remove();
@@ -136,43 +137,43 @@ $(document).ready(function () {
       })
 
    })
-   
+
    //===================================================
    // Create new part on submit of form
    //===================================================
    // $(".submit-btn").on('click', function (event) {
    $("#part-form").on('submit', function (event) {
       event.preventDefault();
-         
-            console.log("I'm in")
-         
-         var partInfo = { 
-            part_name: $("#part_name").val(),
-            part_number: $("#part_number").val(),
-            description: $("#description").val(),
-            quantity: parseInt($("#quantity").val())
-         }
-         console.log(partInfo);
-         $.ajax({
-            method: 'post',
-            url: '/parts',
-            data: partInfo
-         })
-            .then(data => {
-               if (data.message === "Duplicate Entry") {
-                  // console.log('Wrong part data')
-                  //modal goes here
-                  $('#err-modal').modal('open', dismissible=false);
 
-               }
-               else {
-                  $('#success-modal').modal({dismissible: false});
+      console.log("I'm in")
+
+      var partInfo = {
+         part_name: $("#part_name").val(),
+         part_number: $("#part_number").val(),
+         description: $("#description").val(),
+         quantity: parseInt($("#quantity").val())
+      }
+      console.log(partInfo);
+      $.ajax({
+         method: 'post',
+         url: '/parts',
+         data: partInfo
+      })
+         .then(data => {
+            if (data.message === "Duplicate Entry") {
+               // console.log('Wrong part data')
+               //modal goes here
+               $('#err-modal').modal('open', dismissible = false);
+
+            }
+            else {
+               $('#success-modal').modal({ dismissible: false });
                $('#success-modal').modal('open');
-               $('#success').on('click', function(){
+               $('#success').on('click', function () {
                   location.reload();
                })
-               }
-            })
+            }
+         })
    })
 
 })

@@ -4,7 +4,7 @@ const productTagData = [
     {
         product_id: 1,
         part_number: '20200-0001',
-        quantity: 2
+        quantity: 1
     },
     {
         product_id: 1,
@@ -14,27 +14,27 @@ const productTagData = [
     {
         product_id: 1,
         part_number: '20200-0003',
-        quantity: 2
+        quantity: 1
     },
     {
         product_id: 1,
         part_number: '20200-0004',
-        quantity: 2
+        quantity: 1
     },
     {
         product_id: 1,
         part_number: '20200-0005',
-        quantity: 2
+        quantity: 4
     },
     {
         product_id: 1,
         part_number: '20200-0006',
-        quantity: 2
+        quantity: 4
     },
     {
         product_id: 2,
         part_number: '20200-0001',
-        quantity: 2
+        quantity: 1
     },
     {
         product_id: 2,
@@ -44,22 +44,32 @@ const productTagData = [
     {
         product_id: 2,
         part_number: '20200-0013',
-        quantity: 2
+        quantity: 4
     },
     {
         product_id: 2,
         part_number: '20200-0014',
-        quantity: 2
+        quantity: 4
     },
     {
         product_id: 2,
         part_number: '20200-0015',
-        quantity: 2
+        quantity: 1
     },
     {
         product_id: 2,
-        part_number: '20200-0005',
-        quantity: 2
+        part_number: '20200-0008',
+        quantity: 1
+    },
+    {
+        product_id: 2,
+        part_number: '20200-0017',
+        quantity: 1
+    },
+    {
+        product_id: 2,
+        part_number: '20200-00016',
+        quantity: 1
     },
     {
         product_id: 3,
