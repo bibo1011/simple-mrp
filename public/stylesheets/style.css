@@ -1,36 +1,90 @@
 body{
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
+    margin-top: 10px;
+    border: 0px;
+    padding: 0px;
 }
-nav{
+main{
+    margin-top: 10px;
+}
+.row{
+    padding: 0px;
+}
+
+.sidebar{
     padding-top: 10px;
-    margin: 0;
+    padding-left: 0px;
     font-size:15px;
     background-image: linear-gradient(to right, black,lightgrey);
     color: white;
-    line-height: 35px;
+    /* line-height: 35px; */
     box-shadow: 12px 12px 20px 1px rgb(24, 23, 23);
     text-align: center;
-    position: fixed;
+    /* position: fixed; */
     /* left: 0; */
-    width: 150px;
+    width: 200px;
     height: 100%;
     overflow: hidden
 
 }
-nav a i{
-    font-size: 30px;
+.sidebar ul {
+    padding-left: 0px;
+}
+ .sidebar li a i{
+    /* text-align: center; */
+    font-size: 3.0em;
+    /* width: 50px; */
+    /* text-decoration: none; */
+    color: white;
+    display: inline;
 
 }
-nav img{
-    margin-bottom: 50px;
-    height: 50px;
+.sidebar li a{
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    display: block;
+   
 }
-nav a{
+.sidebar li{
+    text-align: center;
+     /* padding-bottom: 50px; */
+     display: block;
+     margin-bottom: 50px;
+     height: 80px;
+}
+li.divider{
+    padding-bottom: 50px;
+    height: 1px;
+}
+.logo-view{
+    /* text-align: center; */
+    padding-left: 0px;
+}
+.logo-view img{
+    /* margin-bottom: 50px; */
+    height: 80px;
+    width: auto;
+    display: fixed;
+    bottom: 0;
+    padding-left: 0px;
+}
+.sidenav-trigger{
+    margin-top: 10px;
+    border-top: 10px;
+    display: inline;
+
+}
+.sidenav-trigger i{
+    font-size: 35px;
+    color: black;
+}
+/* nav a{
   text-decoration: none;
   color: white;
   display: block;
   margin-bottom: 50px;
-}
+} */
 
 nav :hover{
     color: white;
@@ -42,7 +96,7 @@ nav :hover{
 
 .content{
     
-    margin-left: 150px;
+    /* margin-left: 0px; */
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -56,27 +110,18 @@ nav :hover{
     width: 150px;
 }
 .parts-form-container{
-    height: 250px;
+    height: 150px;
     background-color: white;
     padding-top: 25px;
 }
-.parts-form{
-    /* position: sticky;
-    top: 25px; */
-    padding-top: 25px;
-    /* width: 100%; */
-    /* height: 125px; */
-    /* z-index: +1; */
-    /* display: flexbox; */
+.part-form{
+    /* height: 150px; */
+    /* padding-top: 25px; */
     background-color: white;
 }
 
-/* #part-form input{
-    border: 0px;
-    border-bottom: 1px solid grey;
-} */
-#quantity-input{
-    width:100px;
+.part-form-input{
+    margin-bottom:0px;
 }
 .parts-table-container{
     top: 250px;
@@ -92,14 +137,6 @@ nav :hover{
     table-layout: fixed;
 }
 
-/* table{
-    border-collapse: collapse;
-     width: 100%;
-    position: relative;
-    top:250px; 
-    table-layout: fixed;
-    
-} */
  .parts-table td {
     border: 1px solid black;
     height: 60px;
@@ -114,9 +151,6 @@ nav :hover{
 .parts-table tr:nth-child(odd) {
     background-color: #fff;
   }
-/* tr:hover{
-    
-} */
 
 textarea{
     width: 100%;
@@ -129,32 +163,53 @@ textarea{
     width: 100px;
 }
 
-.products-box{
+.products-list{
     border: 1px solid black;
     width: fit-content;
     text-align: left;
-    padding: 5px 10px;
-    overflow-y: scroll;
-    height: 580px;
+    padding-left: 0px;
+    margin: 0px;
+    height: 150px;
+    /* display: fixed; */
+    overflow-y: auto;
+
 }
-.products-box :hover{
-    cursor: default;
+.products-list :hover{
+    cursor: pointer;
 }
-.products-box ul{
+/* .products-list ul{
     margin:0;
     padding:0;
-    line-height: 6px;
-}
-.products-box li :active{
+    line-height: 1px;
+} */
+/* .products-list li :active{
     color: blue;
+    cursor: pointer;
+} */
+.collection-item{
+    /* height: 2px; */
+    font-size: 0.5em;
+    padding: 0px;
 }
-
+.collection{
+    margin: 0px;
+    padding: 0px;
+}
 .product{
     list-style: none;
 }
 .product-info{
     border: 1px solid black;
-    flex-grow: 5;
+    height: 100%;
+    /* flex-grow: 5; */
+}
+.parts-list{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+.parts-list > li{
+    margin: 5px;
 }
 .parts-container{
     display: flex;

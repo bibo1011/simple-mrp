@@ -38,6 +38,7 @@ Part.init(
         quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            min: 0
         }
         
     },

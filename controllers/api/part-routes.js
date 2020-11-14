@@ -5,7 +5,6 @@ router.get('/', (req, res) => {
     console.log('======================');
     Part.findAll({
         attributes: [
-            'id',
             'part_number',
             'part_name',
             'description',
