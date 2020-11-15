@@ -1,20 +1,20 @@
 $(document).ready(function () {
+   M.AutoInit()
+   // // Side Nav initialization
+   // $('.sidenav').sidenav();
+   // // $('.sidenav').sidenav('open');
 
-   // Side Nav initialization
-   $('.sidenav').sidenav();
-   // $('.sidenav').sidenav('open');
+   // // Tooltip initialization
+   // $('.tooltipped').tooltip();
 
-   // Tooltip initialization
-   $('.tooltipped').tooltip();
-
-   //collapsible Initialization
-   $('.collapsible').collapsible();
+   // //collapsible Initialization
+   // $('.collapsible').collapsible();
 
 
-   $('textarea#description, input#part_name, input#part_number').characterCounter();
+    $('textarea#description, input#part_name, input#part_number').characterCounter();
 
-   // Modal initialization
-   $('.modal').modal();
+   // // Modal initialization
+   // $('.modal').modal();
 
 
    //===============================
@@ -176,8 +176,16 @@ $(document).ready(function () {
          })
    })
 
-})
 
 //=====================================
 // Display product Info
 //=====================================
+var elem = $('select')
+var instance = M.FormSelect.getInstance(elem);
+
+$('.dropdown-content').on('click', function () {
+   console.log("Hameed");
+})
+   
+})
+

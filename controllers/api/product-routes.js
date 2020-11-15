@@ -66,17 +66,17 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     /* req.body should look like this....
         {
-            product_name: "Mercedez",
-            model: "GLA 450",
-            user_email: "hameed@ucbmotors.com",
-            parts:[
-                {part_number:'20200-0002', quantity:'3'},
-                {part_number:'20200-0006', quantity:'3'},
-                {part_number:'20200-0004', quantity:'3'},
-                {part_number:'20200-0013', quantity:'3'},
-                {part_number:'20200-0012', quantity:'3'}
-            ]
-        }
+            "product_name": "Mercedez",
+            "model": "GLA 450",
+            "user_email": "hameed@ucbmotors.com",
+            "parts":[
+                {"part_number":"20200-0002", "quantity":3},
+                {"part_number":"20200-0006", "quantity":3},
+                {"part_number":"20200-0004", "quantity":3},
+                {"part_number":"20200-0013", "quantity":3},
+                {"part_number":"20200-0012", "quantity":3}
+            ]
+        }
         */
     Product.create({
       product_name: req.body.product_name,
