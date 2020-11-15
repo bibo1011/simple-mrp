@@ -1,6 +1,7 @@
 // Dependencies
 const router = require('express').Router();
 const { Part, Product, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 // REST API HTTP requests
 // router.get('/', (req, res) => {
@@ -15,7 +16,7 @@ const { Part, Product, User } = require('../models');
 // });
 
 
-router.get('/products/:id', (req, res) => {
+router.get('/products/:id', withAuth, (req, res) => {
     Product.findByPk(req.params.id, {
        include: [
            User,
@@ -40,7 +41,7 @@ router.get('/products/:id', (req, res) => {
 });
 
 
-router.get('/parts', (req, res) => {
+router.get('/parts', withAuth, (req, res) => {
     Part.findAll({
        attributes: [
         'part_number',
@@ -54,14 +55,15 @@ router.get('/parts', (req, res) => {
        
     })
     .then(dbPartData => {
-            // const parts = dbPostData.map(part =>part.get({
-            //     plain: true
-            // }));
-            const parts={
-                parts:dbPartData
-            }
+            const parts = dbPartData.map(part =>part.get({
+                plain: true
+            }));
+            // const parts={
+            //     parts:dbPartData
+            // }
             console.log(parts);
-            res.render('parts', parts)
+            res.render('parts', {parts,
+                loggedIn: req.session.loggedIn})
         })
         .catch(err => {
             console.log(err);
@@ -135,9 +137,9 @@ router.delete('/parts', (req, res)=>{
 //========================================================
 //Product routes
 //========================================================
-router.get('/products', (req, res) => {
+router.get('/products', withAuth, (req, res) => {
     Product.findAll({
-        raw: false,
+        // raw: false,
         attributes: [
             'id',
             'product_name',
@@ -157,7 +159,8 @@ router.get('/products', (req, res) => {
     })
     .then(dbProductData =>{
         console.log (dbProductData);
-        res.render('products', {products: dbProductData})
+        res.render('products', {products: dbProductData,
+            loggedIn: req.session.loggedIn})
     })
     .catch(err => {
         console.log(err);
@@ -166,10 +169,10 @@ router.get('/products', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/')
-    //     return;
-    // }
+    if (req.session.loggedIn) {
+        res.redirect('/')
+        return;
+    }
     res.render('login')
 })
 

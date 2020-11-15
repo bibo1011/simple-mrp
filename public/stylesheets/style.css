@@ -163,5 +163,11 @@ textarea{
 .submit-btn{
     background-color: gray;
 }
+#login-form{
+    padding: 40px;
+}
+.modal p{
+    text-align: center;
+}
 
 

@@ -18,7 +18,18 @@ async function loginFormHandler(event) {
         document.location.replace('/parts');
         console.log('you are in')
       } else {
-        alert(response.statusText);
+        // alert(response.statusText);
+        
+        // document.addEventListener('DOMContentLoaded', function() {
+        //   var elems = document.querySelectorAll('.modal');
+        //   var instances = M.Modal.init(elems);
+        //   instances.open()
+        // });
+        
+        $(document).ready(function(){
+          $('#modal').modal();
+          $('#modal').modal('open');
+        });
       }
     }
 }
