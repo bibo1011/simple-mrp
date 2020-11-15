@@ -20,7 +20,7 @@ $(document).ready(function () {
    //===============================
    // trigger menu
    //================================
-   $('#sidenav-tirgger').on('click', () => {
+   $('#sidenav-trigger').on('click', () => {
       $('.sidenav').sidenav('open');
    })
    //============================================================
@@ -179,5 +179,36 @@ $(document).ready(function () {
 })
 
 //=====================================
-// Display product Info
+// Display Product Info
 //=====================================
+
+//============================================
+// Display Status Options for Product Dropdown
+//============================================
+
+   $(".dropdown-trigger").dropdown();
+ 
+
+//============================================
+// Display Status Options for Product Dropdown
+//============================================
+ $('#yes').on('click', function () {
+   console.log(partInfo)
+   $.ajax({
+      method: "put",
+      url: '/overview',
+      data: partInfo
+   })
+      .then(data => {
+         console.log(data);
+         //if no data is deleted
+         if (!data) {
+            console.log(data);
+         }
+         // location.reload();
+         $('#success-modal').modal({ dismissible: false });
+         $('#success-modal').modal('open');
+         $(".parts-table").find("input,button,textarea,select").attr("disabled", "enabled");
+         $(this).parents('tr').remove();
+      })
+})

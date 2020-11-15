@@ -30,10 +30,10 @@ ProductTag.init(
             allowNull: false,
             
         },
-        status:{
-            type:DataTypes.BOOLEAN,
-            defaultValue:false,
-        }
+        // status:{
+        //     type:DataTypes.BOOLEAN,
+        //     defaultValue:false,
+        // }
         
     },
     {
