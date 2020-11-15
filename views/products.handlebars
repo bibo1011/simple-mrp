@@ -1,4 +1,47 @@
-<a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i></a>
+<div class="trigger-div">
+    <a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i> Menu</a>
+</div>
+
+
+
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" id="product_name" type="text" class="validate">
+                <label for="product_name">Make</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="model" type="text" class="validate">
+                <label for="model">Model</label>
+            </div>
+        </div>
+
+        <div class="input-field col s12 part-select">
+            <select multiple>
+                {{#each parts}}
+                    <option class="selected-parts" value={{part_name}}>{{part_name}}</option>
+                {{/each}}
+                {{!-- <option value="" disabled selected>Choose your option</option>
+                
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option> --}}
+            </select>
+            <label>Select Parts</label>
+        </div>
+        
+        
+    </form>
+</div>
+
+
+
+
+
+
+
+
 <h1>Products</h1>
 
     <!-- Dropdown Trigger -->
@@ -72,10 +115,18 @@
     {{/unless}}
         <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}</div>
         <div class="collapsible-body">
-            <h4>Parts</h4>
+            <h4 class="collapsible-body-header">Parts</h4>
             <ul class="parts-list">
             {{#each parts}}
-            <li><a class="btn tooltipped" data-position="bottom" data-tooltip={{description}}>{{part_name}} ({{product_tag.quantity}})</a></li>
+            <li>
+                <div class="chip">
+                {{part_name}} ({{product_tag.quantity}})
+                {{!-- <i class="close material-icons">close</i> --}}
+                </div>
+
+                {{!-- <a class="btn tooltipped" data-position="bottom" data-tooltip="Part Number: {{part_number}}">{{part_name}}
+                    ({{product_tag.quantity}})</a> --}}
+            </li>
             {{/each}}
             </ul>
 

@@ -67,11 +67,6 @@ const productTagData = [
         quantity: 1
     },
     {
-        product_id: 2,
-        part_number: '20200-0002',
-        quantity: 1
-    },
-    {
         product_id: 3,
         part_number: '20200-0002',
         quantity: 2

@@ -8,15 +8,17 @@ Product.belongsTo(User, {
     foreignKey: 'user_email',
 });
 
-Product.belongsToMany(Part,{
-    through: ProductTag,
-    foreignKey: 'product_id'
-} );
-
 Part.belongsToMany(Product, {
     through: ProductTag,
     foreignKey: 'part_number'
     
 });
+
+Product.belongsToMany(Part,{
+    through: ProductTag,
+    foreignKey: 'product_id'
+} );
+
+
 
 module.exports = {User, Product, Part, ProductTag};

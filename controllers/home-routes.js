@@ -1,6 +1,7 @@
 // Dependencies
 const router = require('express').Router();
 const { Part, Product, User } = require('../models');
+const { findAll } = require('../models/User');
 
 // REST API HTTP requests
 // router.get('/', (req, res) => {
@@ -162,9 +163,22 @@ router.get('/products', (req, res) => {
             }
         ]
     })
-    .then(dbProductData =>{
-        console.log (dbProductData);
-        res.render('products',{products:dbProductData})
+        .then(dbProductData => {
+            Part.findAll({
+                attributes: [
+                    "part_number",
+                    "part_name",
+                    "quantity"
+            ]
+            })
+                .then(dbPartData => {
+                    console.log(dbPartData);
+                    res.render('products', {
+                        products: dbProductData,
+                    parts:dbPartData})
+            })
+        
+        
     })
     .catch(err => {
         console.log(err);
