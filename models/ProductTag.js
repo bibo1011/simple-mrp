@@ -12,7 +12,7 @@ ProductTag.init(
             autoIncrement: true
         },
         product_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'product',
                 key: 'id'
@@ -29,6 +29,10 @@ ProductTag.init(
             type:DataTypes.INTEGER,
             allowNull: false,
             
+        },
+        status:{
+            type:DataTypes.BOOLEAN,
+            defaultValue:false,
         }
         
     },

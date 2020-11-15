@@ -26,6 +26,12 @@ Product.init(
                 len: [1,30]
             }
         },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+
+        // },
+
         user_email: {
             type: DataTypes.STRING,
             references: {

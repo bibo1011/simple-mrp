@@ -69,6 +69,10 @@ router.get('/parts', (req, res) => {
           });
 });
 
+router.get('/overview', (req, res) => {
+    res.render('overview');
+})
+
 router.post('/parts', (req, res) => {
     Part.create({
       part_number: req.body.part_number,
