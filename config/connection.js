@@ -13,4 +13,4 @@ const sequelize = process.env.JAWSDB_URL
     // query: {raw: true}
 });
 
-module.exports = sequelize;
+module.exports = sequelize; 

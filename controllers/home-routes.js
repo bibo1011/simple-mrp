@@ -1,6 +1,7 @@
 // Dependencies
 const router = require('express').Router();
 const { Part, Product, User } = require('../models');
+const { findAll } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 // REST API HTTP requests
@@ -31,7 +32,8 @@ router.get('/products/:id', withAuth, (req, res) => {
                 plain: true
             })
 
-            res.render('single-product', {product})
+            res.render('single-product', {product,
+                loggedIn: req.session.loggedIn})
         } else {
             res.status(404).end()
         }
@@ -81,16 +83,19 @@ router.post('/parts', (req, res) => {
     .then(dbPartData =>{
         console.log ("======================================================================");
         console.log(dbPartData)
-        // if(!dbPartData.isNewRecord){
-        //     console.log("correct")
-        // }
         console.log ("======================================================================");
-        res.json(dbPartData);
+        //  if(dbPartData.part._options.isNewRecord === false){
+        //     res.send({message:"Duplicate Entry"});
+        // }
+        res.send({messgae: "success"});
     })
-        
     .catch(err => {
-        console.log(err.parent.errno);
-        res.send({err:"Duplicate Entry"});
+        if(err){
+            //console.log(err.parent.errno);
+            console.log(err);
+            res.send({message:"Duplicate Entry"});
+        }
+        
     });
 });
 
@@ -139,7 +144,7 @@ router.delete('/parts', (req, res)=>{
 //========================================================
 router.get('/products', withAuth, (req, res) => {
     Product.findAll({
-        // raw: false,
+        // raw:true,
         attributes: [
             'id',
             'product_name',
@@ -157,10 +162,24 @@ router.get('/products', withAuth, (req, res) => {
             }
         ]
     })
-    .then(dbProductData =>{
-        console.log (dbProductData);
-        res.render('products', {products: dbProductData,
-            loggedIn: req.session.loggedIn})
+        .then(dbProductData => {
+            Part.findAll({
+                attributes: [
+                    "part_number",
+                    "part_name",
+                    "quantity"
+            ]
+            })
+                .then(dbPartData => {
+                    console.log(dbProductData);
+                    res.render('products', {
+                        products: dbProductData,
+                        parts:dbPartData,
+                        loggedIn: req.session.loggedIn
+                    })
+            })
+        
+        
     })
     .catch(err => {
         console.log(err);

@@ -3,7 +3,7 @@ const { User, Product, Part, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
     Product.findAll({
-        raw: false,
+        // raw:true,
         attributes: [
             'id',
             'product_name',
@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
                 model: Part,
                 attributes: ['part_number', 'part_name', 'description', 'quantity']
             }
+            // User,Part
         ]
     })
     .then(dbProductData => res.json(dbProductData))
@@ -29,11 +30,11 @@ router.get('/', (req, res) => {
     });
 });
 router.get('/:id', (req, res) => {
-    Product.findOne({
-        raw: false,
+    Product.findAll({
         where: {
-          id: req.params.id
+          user_email: req.params.id
         },
+        raw:false,
         attributes: [
             'id',
             'product_name',
@@ -45,6 +46,7 @@ router.get('/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['email']
+                // User,Part
             },
             {
                 model: Part,
@@ -67,11 +69,17 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     /* req.body should look like this....
         {
-            product_name: "Mercedez",
-            model: "GLA 450",
-            user_email: "hameed@ucbmotors.com",
-            part_numbers:['20200-0002','20200-0006','20200-0004','20200-0013','20200-0012']
-        }
+            "product_name": "Mercedez",
+            "model": "GLA 450",
+            "user_email": "hameed@ucbmotors.com",
+            "parts":[
+                {"part_number":"20200-0002", "quantity":3},
+                {"part_number":"20200-0006", "quantity":3},
+                {"part_number":"20200-0004", "quantity":3},
+                {"part_number":"20200-0013", "quantity":3},
+                {"part_number":"20200-0012", "quantity":3}
+            ]
+        }
         */
     Product.create({
       product_name: req.body.product_name,
@@ -79,12 +87,18 @@ router.post('/', (req, res) => {
       user_email: req.body.user_email
     })
     .then(ProductData =>{
-        if(req.body.part_number.length){
-        const productPartsArr = req.body.part_numbers.map((part_number) =>{
+        if(req.body.parts.length>0){
+            const partsUsedArr = req.body.parts;
+            const productPartsArr = req.body.parts.map((parts) =>{
             return{
                 product_id: ProductData.id,
-                part_number: part_number,
+                part_number: parts.part_number,
+                quantity: parts.quantity
+
             };
+        });
+        partsUsedArr.forEach(part => {
+            Part.decrement('quantity',{by:part.quantity, where:{part_number:part.part_number}});
         });
         return ProductTag.bulkCreate(productPartsArr);
     }

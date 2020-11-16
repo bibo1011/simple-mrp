@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Product} = require('../../models');
+const { User, Product, Part} = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
     });
 });
 router.get('/:id', (req, res) => {
-    User.findOne({
-        // raw: false,
-        // attributes: { exclude: ['password'] },
+    User.findAll({
+        raw:false,
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         },
@@ -22,6 +22,10 @@ router.get('/:id', (req, res) => {
             {
                 model: Product,
                 attributes: [ 'id', 'product_name', 'model', 'created_at' ]
+            },
+            {
+                model: Part,
+                attributes:[ 'part_number', 'part_name', 'description']
             }
         ]
     })
