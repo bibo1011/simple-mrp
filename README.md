@@ -29,8 +29,8 @@
 
   ## Credits
   [Amokeye Ogar](https://github.com/amokeye)
-  ![Blue Abad](https://github.com/bibo1011)
-  ![Hameed Kazeem](https://github.com/hameed1239)
+  [Blue Abad](https://github.com/bibo1011)
+  [Hameed Kazeem](https://github.com/hameed1239)
   ## Contributing
   You can contribute to this project by creating issues on this repository
 
