@@ -5,7 +5,8 @@ const ProductTag = require('./ProductTag');
 
 User.hasMany(Product);
 Product.belongsTo(User, {
-    foreignKey: 'user_email',
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 Part.belongsToMany(Product, {

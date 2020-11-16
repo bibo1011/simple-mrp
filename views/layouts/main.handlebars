@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +29,12 @@
     <li><div class="nav-item"><a href="/parts"><i class="fas fa-cogs"></i><br>Parts</a></div></li>
     <li><div class="nav-item"><a href="/products"><i class="fas fa-cubes"></i><br>Products</a></div></li>
     <li><div class="nav-item"><a href="/account"><i class="fas fa-user"></i><br>Account</a></div></li>
+    {{#if loggedIn}}
+    <button id="logout" class="btn waves-effect waves-light submit-btn">logout</button>
+    {{/if}}
+    <p class="footer">
+    UCB TEAM 6
+    </p>
   </ul>
   
 

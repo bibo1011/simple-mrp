@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const { Part, Product, User } = require('../models');
 const { findAll } = require('../models/User');
+const withAuth = require('../utils/auth');
 
 // REST API HTTP requests
 // router.get('/', (req, res) => {
@@ -9,14 +10,14 @@ const { findAll } = require('../models/User');
 //         include: [User]
 //     }).then(data => {
 //         const prodData = data.map(product => product.get({plain: true}))
-//         res.render('products', {prodData})
+//         res.render('products', prodData)
 //     }).catch(err => {
 //         res.status(500).json(err)
 //     })
 // });
 
 
-router.get('/products/:id', (req, res) => {
+router.get('/products/:id', withAuth, (req, res) => {
     Product.findByPk(req.params.id, {
        include: [
            User,
@@ -31,7 +32,8 @@ router.get('/products/:id', (req, res) => {
                 plain: true
             })
 
-            res.render('single-product', {product})
+            res.render('single-product', {product,
+                loggedIn: req.session.loggedIn})
         } else {
             res.status(404).end()
         }
@@ -41,7 +43,7 @@ router.get('/products/:id', (req, res) => {
 });
 
 
-router.get('/parts', (req, res) => {
+router.get('/parts', withAuth, (req, res) => {
     Part.findAll({
        attributes: [
         'part_number',
@@ -55,14 +57,15 @@ router.get('/parts', (req, res) => {
        
     })
     .then(dbPartData => {
-            // const parts = dbPostData.map(part =>part.get({
-            //     plain: true
-            // }));
-            const parts={
-                parts:dbPartData
-            }
+            const parts = dbPartData.map(part =>part.get({
+                plain: true
+            }));
+            // const parts={
+            //     parts:dbPartData
+            // }
             console.log(parts);
-            res.render('parts', parts)
+            res.render('parts', {parts,
+                loggedIn: req.session.loggedIn})
         })
         .catch(err => {
             console.log(err);
@@ -143,7 +146,7 @@ router.delete('/parts', (req, res)=>{
 //========================================================
 //Product routes
 //========================================================
-router.get('/products', (req, res) => {
+router.get('/products', withAuth, (req, res) => {
     Product.findAll({
         // raw:true,
         attributes: [
@@ -172,10 +175,12 @@ router.get('/products', (req, res) => {
             ]
             })
                 .then(dbPartData => {
-                    console.log(dbPartData);
+                    console.log(dbProductData);
                     res.render('products', {
                         products: dbProductData,
-                    parts:dbPartData})
+                        parts:dbPartData,
+                        loggedIn: req.session.loggedIn
+                    })
             })
         
         
@@ -186,7 +191,7 @@ router.get('/products', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/')
         return;
@@ -195,13 +200,13 @@ router.get('/login', (req, res) => {
 })
 
 
-// router.get('/signup', (req, res) => {
-//     if (req.session.loggedIn) {
-//         res.redirect('/')
-//         return;
-//     }
-//     res.render('signup')
-// })
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/')
+        return;
+    }
+    res.render('signup')
+})
 
 
 // Command to export code

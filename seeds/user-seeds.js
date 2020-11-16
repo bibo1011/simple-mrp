@@ -4,7 +4,7 @@ const { User } = require('../models');
 const userData = [
     {
         email: 'blue@ucbmotors.com',
-        password: 'pass'
+        password: '$2b$10$Z0tZi9YkpuI.3YBJriDt9uZQThyLgfnGC2bK/0CzXw8XxULq73GfG'
     },
     {
         email: 'hameed@ucbmotors.com',

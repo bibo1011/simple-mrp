@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
             'id',
             'product_name',
             'model',
-            'created_at'
+            'created_at',
+            // 'user_id'
         ],
         include: [
             {
@@ -37,7 +38,9 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'product_name',
-            'model'
+            'model',
+            'created_at',
+            // 'user_id'
         ],
         include: [
             {

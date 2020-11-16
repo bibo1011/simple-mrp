@@ -15,11 +15,23 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/products');
+        document.location.replace('/parts');
+        console.log('you are in')
       } else {
-        alert(response.statusText);
+        // alert(response.statusText);
+        
+        // document.addEventListener('DOMContentLoaded', function() {
+        //   var elems = document.querySelectorAll('.modal');
+        //   var instances = M.Modal.init(elems);
+        //   instances.open()
+        // });
+        
+        $(document).ready(function(){
+          $('#modal').modal();
+          $('#modal').modal('open');
+        });
       }
     }
 }
   
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+document.querySelector('#login-form').addEventListener('submit', loginFormHandler);

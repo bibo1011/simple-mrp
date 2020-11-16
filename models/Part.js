@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrpyt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Part extends Model{}
