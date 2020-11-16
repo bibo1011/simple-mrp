@@ -28,19 +28,12 @@ User.init(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            // validate: {
-            //   len: [1,30]
-            // }
+            
         }
     },
     {    
         hooks: {
-            // set up beforeCreate lifecycle "hook" functionality
-            // beforeCreate(userData) {
-            //     return bcrypt.hash(userData.password, 10).then(newUserData => {
-            //         return newUserData
-            //     });
-            // }
+            
             // async/await method
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);

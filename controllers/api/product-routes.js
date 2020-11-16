@@ -3,14 +3,6 @@ const { User, Product, Part, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
     Product.findAll({
-        // raw:true,
-        // attributes: [
-        //     'id',
-        //     'product_name',
-        //     'model',
-        //     'created_at',
-        //     // 'user_id'
-        // ],
         include: [
             {
                 model: User,
@@ -20,7 +12,6 @@ router.get('/', (req, res) => {
                 model: Part,
                 attributes: ['part_number', 'part_name', 'description', 'quantity']
             }
-            // User,Part
         ]
     })
     .then(dbProductData => res.json(dbProductData))
@@ -41,13 +32,11 @@ router.get('/:id', (req, res) => {
             'model',
             'isCompleted',
             'created_at',
-            // 'user_id'
         ],
         include: [
             {
                 model: User,
-                attributes: ['email']
-                // User,Part
+                attributes: ['id', 'email']
             },
             {
                 model: Part,
@@ -70,51 +59,51 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     /* req.body should look like this....
         {
-            "product_name": "Mercedez",
-            "model": "GLA 450",
-            "user_id": 2,
-            "isCompleted": true,
-            "parts":[
-                {"part_number":"20200-0002", "quantity":3},
-                {"part_number":"20200-0006", "quantity":3},
-                {"part_number":"20200-0004", "quantity":3},
-                {"part_number":"20200-0013", "quantity":3},
-                {"part_number":"20200-0012", "quantity":3}
-            ]
-        }
+            "product_name": "Mercedez",
+            "model": "GLA 450",
+            "user_email": "hameed@ucbmotors.com",
+            "parts":[
+                {"part_number":"20200-0002", "quantity":3},
+                {"part_number":"20200-0006", "quantity":3},
+                {"part_number":"20200-0004", "quantity":3},
+                {"part_number":"20200-0013", "quantity":3},
+                {"part_number":"20200-0012", "quantity":3}
+            ]
+        }
         */
+    console.log("body is ");
+    console.log(req.body);
     Product.create({
-      product_name: req.body.product_name,
-      model: req.body.model,
-      isCompleted: req.body.isCompleted,
-      user_id: req.body.user_id
-      
+        // raw:true,
+        product_name: req.body.product_name,
+        model: req.body.model,
+        user_id: req.body.user_id,
+        isCompleted: true
     })
-    .then(ProductData =>{
-        if(req.body.parts.length>0){
-            const partsUsedArr = req.body.parts;
-            const productPartsArr = req.body.parts.map((parts) =>{
-            return{
-                product_id: ProductData.id,
-                part_number: parts.part_number,
-                quantity: parts.quantity
-
-            };
+        .then(ProductData => {
+            if (req.body.parts.length > 0) {
+                const partsUsedArr = req.body.parts;
+                const productPartsArr = req.body.parts.map((parts) => {
+                    return {
+                        product_id: ProductData.id,
+                        part_number: parts.part_number,
+                        quantity: parts.quantity
+                    };
+                });
+                partsUsedArr.forEach(part => {
+                    Part.decrement('quantity', { by: part.quantity, where: { part_number: part.part_number } });
+                });
+                return ProductTag.bulkCreate(productPartsArr);
+            }
+            res.status(200).json(ProductData);
+        })
+        .then((productParts) => {
+            res.status(200).json(productParts);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-        partsUsedArr.forEach(part => {
-            Part.decrement('quantity',{by:part.quantity, where:{part_number:part.part_number}});
-        });
-        return ProductTag.bulkCreate(productPartsArr);
-    }
-    // res.status(200).json(ProductData);
-    })
-    .then((productParts) =>{
-        res.status(200).json(productParts);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 router.put('/:id', (req, res) => {
     Product.update(

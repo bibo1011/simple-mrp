@@ -10,7 +10,18 @@
         </div>
     </div>
 </section>
-
+<!-- Modal Structure -->
+<section class="err-modal">
+    <div id="err-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="info-modal-heading">Error</h4>
+            <p id="info-modal-content">Error processing your request </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</section>
 <div class="trigger-div">
     <a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i> Menu</a>
 </div>
@@ -21,11 +32,11 @@
 <div class="row">
     <form class="col s12">
         <div class="row">
-            <div class="input-field col 612">
+            <div class="input-field col s12">
                 {{#each products}}
                 {{#if @first}}
                 <input id="user_email" type="text" disabled class="validate" value={{user.email}}>
-                <label for="user_email">User Email</label>
+                <input id="user_id" type="text" hidden class="validate" value={{user.id}}>
                 {{/if}}
                 {{/each}}
             </div>
@@ -46,10 +57,6 @@
                 {{#each parts}}
                     <option class="selected-parts" value={{part_name}},{{part_number}}>{{part_name}}</option>
                 {{/each}}
-                {{!-- <option value="" disabled selected>Choose your option</option>
-                
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option> --}}
             </select>
             <label>Select Parts</label>
         </div>
@@ -67,7 +74,6 @@
             <button class="btn waves-effect waves-light submit-btn" id="product-form-submit" type="submit" name="action">Submit
                 <i class="fas fa-paper-plane"></i>
             </button>
-            {{!-- <a class="waves-effect waves-light btn-large">Save<i class="far fa-save"></i></a> --}}
         </div>
     </form>
 </div>
@@ -80,53 +86,6 @@
 
 
 <h1>Products</h1>
-
-{{!-- <div class="row">
-    <div class="col s3">
-        <div class="row ">
-            <div class="col s12 products-list" >
-                <ul class="collection">
-                    {{#each products}}
-                    <li class=" collection-item product">
-                        <p>{{id}}</p>
-                        <p>{{product_name}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 selected-product">
-                {{#each products}}
-                {{#if @first}}
-                <p class="selected-product-info" id="selected-id">Product #: {{id}}</p>
-                <p class="selected-product-info" id="selected-name">Name: {{product_name}}</p>
-                <p class="selected-product-info" id="selected-model">Model: {{model}}</p>
-                {{/if}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="col s7 product-info">
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>Parts</h4></li>
-    {{#each products}}
-    {{#if @first}}
-    {{#each parts}}
-    <li class="collection-item">
-        <span class="title">Part #: {{part_number}}</span>
-        <p>Description: {{description}}<br>
-           Quantity Needed: {{product_tag.quantity}}
-        </p>
-        
-    </li>
-    {{/each}}
-    {{/if}}
-    {{/each}}
-    </ul>
-    </div>
-
-</div> --}}
 
 
 
@@ -149,11 +108,9 @@
             <li>
                 <div class="chip">
                 {{part_name}} ({{product_tag.quantity}})
-                {{!-- <i class="close material-icons">close</i> --}}
                 </div>
 
-                {{!-- <a class="btn tooltipped" data-position="bottom" data-tooltip="Part Number: {{part_number}}">{{part_name}}
-                    ({{product_tag.quantity}})</a> --}}
+                
             </li>
             {{/each}}
             </ul>

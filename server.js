@@ -19,8 +19,8 @@ app.engine('handlebars',
   exphbs({ defaultLayout: 'main',//specifies main.handlebars as the default layout
     runtimeOptions:{//Helps avoid runtime issues
       allowProtoPropertiesByDefault: true,
-      allowProtoMethodsByDefault: true
-      // query: {raw: true}  
+      allowProtoMethodsByDefault: true,
+      //  query: {raw: true}  
     }
   })
 );

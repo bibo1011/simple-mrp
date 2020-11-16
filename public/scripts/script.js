@@ -1,17 +1,7 @@
-const { post } = require("../../controllers");
 
 $(document).ready(function () {
+   //Initialize all materialize items
    M.AutoInit()
-   // // Side Nav initialization
-   // $('.sidenav').sidenav();
-   // // $('.sidenav').sidenav('open');
-
-   // // Tooltip initialization
-   // $('.tooltipped').tooltip();
-
-   // //collapsible Initialization
-   // $('.collapsible').collapsible();
-
 
     $('textarea#description, input#part_name, input#part_number').characterCounter();
 
@@ -81,9 +71,6 @@ $(document).ready(function () {
             quantity: quantity,
             part_number: $(this).parent().siblings('.part-number').text()
          }
-         //  start loader
-         // var loaderInstance = M.modal.getInstance($('#load-modal'))
-         // loaderInstance.open();
          //update database
          $.ajax({
             method: "PUT",
@@ -92,7 +79,6 @@ $(document).ready(function () {
 
          })
             .then(data => {
-               // loaderInstance.close();
                console.log(data);
                descField.empty();
                descField.html(description);
@@ -100,8 +86,6 @@ $(document).ready(function () {
                quantityField.html(quantity);
                $('#success-modal').modal({ dismissible: false });
                $('#success-modal').modal('open');
-               // $('.modal').modal();
-               //location.reload();
             })
       }
 
@@ -163,7 +147,6 @@ $(document).ready(function () {
       })
          .then(data => {
             if (data.message === "Duplicate Entry") {
-               // console.log('Wrong part data')
                //modal goes here
                $('#err-modal').modal('open', dismissible = false);
 
@@ -182,8 +165,7 @@ $(document).ready(function () {
 //=====================================
 // Display product Info
 //=====================================
-var elem = $('select.part-select')
-// var instance = M.FormSelect.getInstance(elem);
+   var elem = $('select.part-select');
 
    $(elem).on("change", function (event) {
       $('.selected-parts-list').empty();
@@ -206,30 +188,44 @@ var elem = $('select.part-select')
 
       var product_name = $("#product_name").val();
       var model = $("#model").val();
-      var user_email = $("#user_email").val();
+      var user_id = $("#user_id").val();
       var partNames = elem.val();
       var parts = [];
       partNames.forEach(part_name => {
          parts.push(
             {
-               part_num:$(`#${part_name}`).siblings('input').val(),
-               quantity: parseInt($(`#${part_name}`).val())
+               "part_number":$(`#${part_name}`).siblings('input').val(),
+               "quantity": parseInt($(`#${part_name}`).val())
             })
       })
-      var productInfo = {
-         product_name: product_name,
-         model: model,
-         user_email: user_email,
-         parts: parts
-      }
-      // console.log(product_name, model, user_email, parts);
+      var productInfo = JSON.stringify({
+         "product_name": product_name,
+         "model": model,
+         "user_id": parseInt(user_id),
+         "isComplete": true,
+         "parts": parts
+      })
+      console.log(product_name, model, user_id, parts);
       $.ajax({
          method: "post",
-         url: "/products",
-         data: productInfo
+         url: "/api/products",
+         data: productInfo,
+         dataType: "json",
+         contentType: "application/json; charset=utf-8",
+         
       })
          .then(dbData => {
-         
+            if (dbData) {
+               $('#success-modal').modal({ dismissible: false });
+               $('#success-modal').modal('open');
+               $('#success').on('click', function () {
+                  location.reload();
+               })
+
+            }
+            else {
+               $('#err-modal').modal('open', dismissible = false);
+            }
       })
    })
    

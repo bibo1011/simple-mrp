@@ -10,8 +10,6 @@ main{
     padding: 0px;
 }
 
-
-
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -33,13 +31,6 @@ main{
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000; 
 }
-
-
-
-
- /* header, main, footer {
-      padding-left: 150px;
-    } */
 
 .sidebar{
     padding-top: 10px;
@@ -101,7 +92,6 @@ main{
 .sidenav-trigger i{
     font-size: 1.5em;
     color: black;
-    /* display: none; */
 }
 .sidenav-trigger{
     color: black;
@@ -109,8 +99,6 @@ main{
 
 
 .content{
-    
-    /* margin-left: 0px; */
     padding-left: 200px;
     padding-right: 50px;
 }
@@ -129,8 +117,6 @@ main{
     padding-top: 25px;
 }
 .part-form{
-    /* height: 150px; */
-    /* padding-top: 25px; */
     background-color: white;
 }
 
@@ -188,7 +174,6 @@ textarea{
     padding-left: 0px;
     margin: 0px;
     height: 150px;
-    /* display: fixed; */
     overflow-y: auto;
 
 }
@@ -196,7 +181,6 @@ textarea{
     cursor: pointer;
 }
 .collection-item{
-    /* height: 2px; */
     font-size: 0.5em;
     padding: 0px;
 }
@@ -210,11 +194,9 @@ textarea{
 .product-info{
     border: 1px solid black;
     height: 100%;
-    /* flex-grow: 5; */
 }
 .parts-list{
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
 }
 .parts-list > li{
@@ -235,8 +217,6 @@ textarea{
 .switch{
     position: initial;
     right: 0;
-    /* margin-left: 100px; */
-    /* text-align: right; */
 }
 .btn{
     background-color: gray;
@@ -245,8 +225,6 @@ textarea{
 }
 .btn:hover{
     background-color: gray;
-    /* box-shadow: none; */
-    /* cursor: context-menu; */
 }
 .parts-container{
     display: flex;
@@ -269,6 +247,12 @@ textarea{
 }
 #account{
     padding: 40px;
+}
+#myChart{
+    padding-bottom: 20px;
+    height: 200px;
+    width: 200px;
+    display: block;
 }
 
  @media only screen and (max-width : 992px) {
