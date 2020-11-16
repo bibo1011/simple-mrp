@@ -103,6 +103,15 @@
         <li>
     {{/unless}}
         <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}</div>
+                    <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn' style="position: absolute; right: 5%;" href='#' data-target='dropdown1'>Confirm completion status</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li id="finished"><a href="#!"><i class="material-icons">check</i>Completed</a></li>
+                <li id="pending"><a href="#!"><i class="material-icons">access_time</i>In Progress</a></li>
+            </ul>
+        </div>
         <div class="collapsible-body">
             <h4 class="collapsible-body-header">Parts</h4>
             <ul class="parts-list">
