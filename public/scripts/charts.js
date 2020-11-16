@@ -38,6 +38,7 @@ $.ajax({
             inProgress++;
         }
     });
+  
     console.log(data);
     //if no data is deleted
     if (!data) {

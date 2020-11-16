@@ -29,11 +29,11 @@ ProductTag.init(
             type:DataTypes.INTEGER,
             allowNull: false,
             
-        },
-        status:{
-            type:DataTypes.BOOLEAN,
-            defaultValue:false,
-        } 
+        }
+        // isCompleted:{
+        //     type:DataTypes.BOOLEAN,
+        //     defaultValue:false,
+        // } 
     },
     {
         sequelize,

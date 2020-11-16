@@ -42,16 +42,6 @@
 
 <h1>Products</h1>
 
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Click Here to Confirm Product Status
-        <i class="mdi-navigation-arrow-drop-down right"></i>
-    </a>
-
-    <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
-        <li id='completed'><a href="#!"><i class="material-icons">check_box</i>Completed</a></li>
-        <li id='pending'><a href="#!"><i class="material-icons">timelapse</i>In Progress</a></li>
-    </ul>
 
 {{!-- <div class="row">
     <div class="col s3">
@@ -111,8 +101,8 @@
     {{#unless @first}}
         <li>
     {{/unless}}
-        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}</div>
-                    <!-- Dropdown Trigger -->
+        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}
+            <!-- Dropdown Trigger -->
             <a class='dropdown-trigger btn' style="position: absolute; right: 5%;" href='#' data-target='dropdown1'>Confirm completion status</a>
 
             <!-- Dropdown Structure -->

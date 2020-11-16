@@ -265,3 +265,10 @@ textarea{
           display: inline;
       }
     }
+
+h2 {
+    text-align: center;
+    padding: 50px;
+    background-color: gray;
+    color: black;
+    }
