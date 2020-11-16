@@ -272,3 +272,9 @@ h2 {
     background-color: gray;
     color: black;
     }
+text.ct-label {
+    font-size: 20px;
+}
+.ct-series-a .ct-slice-pie {
+    fill: purple;
+}

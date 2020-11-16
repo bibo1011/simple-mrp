@@ -81,10 +81,12 @@ router.post('/', (req, res) => {
             ]
         }
         */
+    console.log(req.body);
     Product.create({
       product_name: req.body.product_name,
       model: req.body.model,
-      user_email: req.body.user_email
+      user_email: req.body.user_email,
+      isCompleted: true
     })
     .then(ProductData =>{
         if(req.body.parts.length>0){

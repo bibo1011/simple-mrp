@@ -19,7 +19,7 @@ var inProgress = 0;
       }
     }],
     ['screen and (min-width: 1024px)', {
-      labelOffset: 80,
+      labelOffset: 150,
       chartPadding: 20
     }]
   ];
@@ -49,7 +49,7 @@ $.ajax({
 .then(result => {
     // Variable to auto-update products chart
     var data = {
-        labels: ['Products Completed', 'Products in Progress'],
+        labels: ['PRODUCTS COMPLETED', 'PRODUCTS IN PROGRESS'],
         series: [completed, inProgress]
     };
 
