@@ -220,11 +220,23 @@ textarea{
 .parts-list > li{
     margin: 5px;
 }
+.selected-parts-header span{
+    font-size: 0.3em;
+}
 .collapsible-body{
     padding-top: 10px;
 }
 .collapsible-body-header{
     margin-top: 0px;
+}
+.collapsible-header{
+    display: flexbox;
+}
+.switch{
+    position: initial;
+    right: 0;
+    /* margin-left: 100px; */
+    /* text-align: right; */
 }
 .btn{
     background-color: gray;

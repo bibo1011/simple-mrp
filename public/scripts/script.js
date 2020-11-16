@@ -1,3 +1,5 @@
+const { post } = require("../../controllers");
+
 $(document).ready(function () {
    M.AutoInit()
    // // Side Nav initialization
@@ -180,12 +182,56 @@ $(document).ready(function () {
 //=====================================
 // Display product Info
 //=====================================
-var elem = $('select')
-var instance = M.FormSelect.getInstance(elem);
+var elem = $('select.part-select')
+// var instance = M.FormSelect.getInstance(elem);
 
-$('.dropdown-content').on('click', function () {
-   console.log("Hameed");
-})
+   $(elem).on("change", function (event) {
+      $('.selected-parts-list').empty();
+      $('.selected-parts-header').empty();
+      $('.selected-parts-header').append("Selected parts<span>(Select Quantity for each part selected)</span>")
+      var selectedParts = elem.val();
+      selectedParts.forEach(part => {
+         var partInfoArr= part.split(",")
+         var part_name = partInfoArr[0];
+         var part_number = partInfoArr[1];
+         var li = `<li>${part_name} <input type="number" id = "${part_name}" value = "1" min= "1"><input type="hidden" hidden id = "${part_number}" value = "${part_number}" min= "1"></li>`;
+         $('.selected-parts-list').append(li);
+      })
+   
+   
+   })
+   
+   $("#product-form-submit").on('click', function (event) {
+      event.preventDefault();
+
+      var product_name = $("#product_name").val();
+      var model = $("#model").val();
+      var user_email = $("#user_email").val();
+      var partNames = elem.val();
+      var parts = [];
+      partNames.forEach(part_name => {
+         parts.push(
+            {
+               part_num:$(`#${part_name}`).siblings('input').val(),
+               quantity: parseInt($(`#${part_name}`).val())
+            })
+      })
+      var productInfo = {
+         product_name: product_name,
+         model: model,
+         user_email: user_email,
+         parts: parts
+      }
+      // console.log(product_name, model, user_email, parts);
+      $.ajax({
+         method: "post",
+         url: "/products",
+         data: productInfo
+      })
+         .then(dbData => {
+         
+      })
+   })
    
 })
 

@@ -25,6 +25,10 @@ Product.init(
                 len: [1,30]
             }
         },
+        isCompleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         user_id: {
             type: DataTypes.STRING,
             references: {

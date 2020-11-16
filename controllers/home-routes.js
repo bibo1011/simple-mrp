@@ -145,12 +145,16 @@ router.delete('/parts', (req, res)=>{
 router.get('/products', withAuth, (req, res) => {
     Product.findAll({
         // raw:true,
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
             'id',
             'product_name',
             'model',
             'created_at'
         ],
+        
         include: [
             {
                 model: User,

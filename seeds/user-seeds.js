@@ -4,15 +4,15 @@ const { User } = require('../models');
 const userData = [
     {
         email: 'blue@ucbmotors.com',
-        password: 'pass'
+        password: '$2b$10$GG.Cuxjriwg90dnN.E5k7uucjGVLk0hEgvPluMjRexCOhBy7DA6xm'
     },
     {
         email: 'hameed@ucbmotors.com',
-        password: 'pass'
+        password: '$2b$10$GG.Cuxjriwg90dnN.E5k7uucjGVLk0hEgvPluMjRexCOhBy7DA6xm'
     },
     {
         email: 'amokeye@ucbmotors.com',
-        password: 'pass'
+        password: '$2b$10$GG.Cuxjriwg90dnN.E5k7uucjGVLk0hEgvPluMjRexCOhBy7DA6xm'
     }
 ]
 

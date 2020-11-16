@@ -1,3 +1,16 @@
+<!-- Modal Structure -->
+<section class="err-modal">
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="info-modal-heading">Confirmation</h4>
+            <p id="info-modal-content">Success </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="success" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</section>
+
 <div class="trigger-div">
     <a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i> Menu</a>
 </div>
@@ -8,8 +21,18 @@
 <div class="row">
     <form class="col s12">
         <div class="row">
+            <div class="input-field col 612">
+                {{#each products}}
+                {{#if @first}}
+                <input id="user_email" type="text" disabled class="validate" value={{user.email}}>
+                <label for="user_email">User Email</label>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="row">
             <div class="input-field col s6">
-                <input placeholder="Placeholder" id="product_name" type="text" class="validate">
+                <input id="product_name" type="text" class="validate">
                 <label for="product_name">Make</label>
             </div>
             <div class="input-field col s6">
@@ -17,11 +40,11 @@
                 <label for="model">Model</label>
             </div>
         </div>
-
-        <div class="input-field col s12 part-select">
-            <select multiple>
+        <div class="row">
+            <div class="input-field col s12 ">
+            <select multiple class="part-select">
                 {{#each parts}}
-                    <option class="selected-parts" value={{part_name}}>{{part_name}}</option>
+                    <option class="selected-parts" value={{part_name}},{{part_number}}>{{part_name}}</option>
                 {{/each}}
                 {{!-- <option value="" disabled selected>Choose your option</option>
                 
@@ -30,8 +53,22 @@
             </select>
             <label>Select Parts</label>
         </div>
+        </div>
+        <div class="row">
+            <div class="selected-parts-container">
+            <h4 class="selected-parts-header"></h4>
+            <ul class="selected-parts-list">
+
+            </ul>
+        </div>
+        </div>
         
-        
+        <div class="col s12">
+            <button class="btn waves-effect waves-light submit-btn" id="product-form-submit" type="submit" name="action">Submit
+                <i class="fas fa-paper-plane"></i>
+            </button>
+            {{!-- <a class="waves-effect waves-light btn-large">Save<i class="far fa-save"></i></a> --}}
+        </div>
     </form>
 </div>
 
@@ -102,7 +139,9 @@
     {{#unless @first}}
         <li>
     {{/unless}}
-        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}}</div>
+        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}} 
+        
+        </div>
         <div class="collapsible-body">
             <h4 class="collapsible-body-header">Parts</h4>
             <ul class="parts-list">

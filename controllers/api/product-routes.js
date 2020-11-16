@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
             'id',
             'product_name',
             'model',
+            "isCompleted",
             'created_at',
             // 'user_id'
         ],
@@ -72,6 +73,7 @@ router.post('/', (req, res) => {
             "product_name": "Mercedez",
             "model": "GLA 450",
             "user_email": "hameed@ucbmotors.com",
+            
             "parts":[
                 {"part_number":"20200-0002", "quantity":3},
                 {"part_number":"20200-0006", "quantity":3},
