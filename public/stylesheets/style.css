@@ -246,8 +246,14 @@ textarea{
 #login-form{
     padding: 40px;
 }
+#signup-form{
+    padding: 40px;
+}
 .modal p{
     text-align: center;
+}
+.create{
+    padding-left: 15%;
 }
 
 
