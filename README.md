@@ -1,6 +1,6 @@
 # simple-mrp
 
-  ![NPM](https://img.shields.io/badge/license-MIT-<green>) ![ NPM](https://img.shields.io/github/languages/top/hameed1239/simple-mrp) ![ NPM](https://img.shields.io/github/followers/hameed1239?style=social)
+  ![NPM](https://img.shields.io/badge/license-MIT-<green>) ![ NPM](https://img.shields.io/github/followers/hameed1239?style=social)
 
   ## Description
   It is a Material requirement planning application that allows a small manufacturing company keep track of their material inventory. It helps avoid shortage of materials. This Application is simple in the sense that at the moment, it tracks parts for a car manufacturer. It can be scaled up to track manufactured product, sales request, and fulfilment. It can also serve as a financial report tool that tracks, profit and loss from the cost of materials and man hours needed to perform a job. Therefore giving you a foresight on how much you should charge per job. The functionalities can very well be endless.    
