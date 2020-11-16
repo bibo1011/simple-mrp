@@ -1,0 +1,120 @@
+<!-- Modal Structure -->
+<section class="err-modal">
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="info-modal-heading">Confirmation</h4>
+            <p id="info-modal-content">Success </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="success" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</section>
+<!-- Modal Structure -->
+<section class="err-modal">
+    <div id="err-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="info-modal-heading">Error</h4>
+            <p id="info-modal-content">Error processing your request </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</section>
+<div class="trigger-div">
+    <a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger"><i class="fas fa-bars"></i> Menu</a>
+</div>
+
+
+
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                {{#each products}}
+                {{#if @first}}
+                <input id="user_email" type="text" disabled class="validate" value={{user.email}}>
+                <input id="user_id" type="text" hidden class="validate" value={{user.id}}>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="product_name" type="text" class="validate">
+                <label for="product_name">Make</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="model" type="text" class="validate">
+                <label for="model">Model</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 ">
+            <select multiple class="part-select">
+                {{#each parts}}
+                    <option class="selected-parts" value={{part_name}},{{part_number}}>{{part_name}}</option>
+                {{/each}}
+            </select>
+            <label>Select Parts</label>
+        </div>
+        </div>
+        <div class="row">
+            <div class="selected-parts-container">
+            <h4 class="selected-parts-header"></h4>
+            <ul class="selected-parts-list">
+
+            </ul>
+        </div>
+        </div>
+        
+        <div class="col s12">
+            <button class="btn waves-effect waves-light submit-btn" id="product-form-submit" type="submit" name="action">Submit
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+<h1>Products</h1>
+
+
+
+
+<ul class="collapsible popout">
+    {{#each products}}
+    {{#if @first}}
+    <li class="active">
+    {{/if}}
+    {{#unless @first}}
+        <li>
+    {{/unless}}
+        <div class="collapsible-header"><i class="fas fa-car-alt"></i>{{product_name}}, {{model}} 
+        
+        </div>
+        <div class="collapsible-body">
+            <h4 class="collapsible-body-header">Parts</h4>
+            <ul class="parts-list">
+            {{#each parts}}
+            <li>
+                <div class="chip">
+                {{part_name}} ({{product_tag.quantity}})
+                </div>
+
+                
+            </li>
+            {{/each}}
+            </ul>
+        </div>
+    </li>
+    {{/each}}
+</ul>
