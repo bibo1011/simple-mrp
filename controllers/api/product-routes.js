@@ -4,14 +4,13 @@ const { User, Product, Part, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
     Product.findAll({
         // raw:true,
-        attributes: [
-            'id',
-            'product_name',
-            'model',
-            "isCompleted",
-            'created_at',
-            // 'user_id'
-        ],
+        // attributes: [
+        //     'id',
+        //     'product_name',
+        //     'model',
+        //     'created_at',
+        //     // 'user_id'
+        // ],
         include: [
             {
                 model: User,
@@ -33,13 +32,14 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Product.findAll({
         where: {
-          user_email: req.params.id
+          user_id: req.params.id
         },
         raw:false,
         attributes: [
             'id',
             'product_name',
             'model',
+            'isCompleted',
             'created_at',
             // 'user_id'
         ],
@@ -72,8 +72,8 @@ router.post('/', (req, res) => {
         {
             "product_name": "Mercedez",
             "model": "GLA 450",
-            "user_email": "hameed@ucbmotors.com",
-            
+            "user_id": 2,
+            "isCompleted": true,
             "parts":[
                 {"part_number":"20200-0002", "quantity":3},
                 {"part_number":"20200-0006", "quantity":3},
@@ -86,7 +86,9 @@ router.post('/', (req, res) => {
     Product.create({
       product_name: req.body.product_name,
       model: req.body.model,
-      user_email: req.body.user_email
+      isCompleted: req.body.isCompleted,
+      user_id: req.body.user_id
+      
     })
     .then(ProductData =>{
         if(req.body.parts.length>0){
@@ -104,7 +106,7 @@ router.post('/', (req, res) => {
         });
         return ProductTag.bulkCreate(productPartsArr);
     }
-    res.status(200).json(ProductData);
+    // res.status(200).json(ProductData);
     })
     .then((productParts) =>{
         res.status(200).json(productParts);

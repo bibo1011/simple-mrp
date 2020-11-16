@@ -4,14 +4,22 @@ const productData = [
     {
         product_name: 'Toyota',
         model: '4runner',
+<<<<<<< HEAD
         isCompleted: true,
+=======
+        isCompleted: false,
+>>>>>>> feature/model
         // user_email: 'hameed@ucbmotors.com'
         user_id: 2
     },
     {
         product_name: 'Chrysler',
         model: 'Corvette',
+<<<<<<< HEAD
         isCompleted: false,
+=======
+        isCompleted: true,
+>>>>>>> feature/model
         // user_email: 'blue@ucbmotors.com'
         user_id: 1
     },
@@ -32,7 +40,11 @@ const productData = [
     {
         product_name: 'Jeep',
         model: 'Wrangler',
+<<<<<<< HEAD
         isCompleted: true,
+=======
+        isCompleted: false,
+>>>>>>> feature/model
         // user_email: 'hameed@ucbmotors.com'
         user_id: 2
     },

@@ -23,10 +23,10 @@ router.get('/:id', (req, res) => {
                 model: Product,
                 attributes: [ 'id', 'product_name', 'model', 'created_at' ]
             },
-            {
-                model: Part,
-                attributes:[ 'part_number', 'part_name', 'description']
-            }
+            // {
+            //     model: Part,
+            //     attributes:[ 'part_number', 'part_name', 'description']
+            // }
         ]
     })
     .then(dbUserData => {
@@ -47,13 +47,10 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
     .then(dbUserData => {
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id ;
-            req.session.email = dbUserData.email;
-            req.session.loggedIn = true;
+        
     
             res.json(dbUserData);
-        });
+        
     })
     .catch(err => {
         console.log(err);
@@ -62,6 +59,7 @@ router.post('/', (req, res) => {
 });
 router.post('/login', (req, res) => {
     User.findOne({
+        // attributes: { exclude: ['password'] },
         where: {
             email: req.body.email
         }
