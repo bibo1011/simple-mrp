@@ -72,12 +72,12 @@ router.post('/', (req, res) => {
         }
         */
     console.log("body is ");
-    console.log(req.body);
+    console.log(req.session.user_id);
     Product.create({
         // raw:true,
         product_name: req.body.product_name,
         model: req.body.model,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         isCompleted: true
     })
         .then(ProductData => {
