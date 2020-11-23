@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  $('#modal').modal();
+  M.AutoInit()
+  $('#modal20').modal();
   async function loginFormHandler(event) {
     event.preventDefault();
   
@@ -19,12 +20,11 @@ $(document).ready(function () {
       })
           .then(response => {
             console.log(response);
-        if (response.user.email===email) {
-          
-          document.location.replace('/overview');
+        if (!response) {
+          $('#modal20').modal('open');
         } else {          
+          document.location.replace('/overview');
             
-            $('#modal').modal('open');
         }
       })
     }
