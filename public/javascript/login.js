@@ -1,4 +1,7 @@
-async function loginFormHandler(event) {
+$(document).ready(function () {
+  M.AutoInit()
+  $('#modal20').modal();
+  async function loginFormHandler(event) {
     event.preventDefault();
   
     const email = document.querySelector('#email-login').value.trim();
@@ -10,27 +13,23 @@ async function loginFormHandler(event) {
           password: password
         }
         $.ajax({
-          
-
         method: 'post',
         url: '/api/users/login',
         data: userData
         
       })
-      .then(response =>{
-        if (response.user.email===email) {
-          
+          .then(response => {
+            console.log(response);
+        if (!response) {
+          $('#modal20').modal('open');
+        } else {          
           document.location.replace('/overview');
-        } else {
-          
-          
-          $(document).ready(function(){
-            $('#modal').modal();
-            $('#modal').modal('open');
-          });
+            
         }
       })
     }
 }
   
 document.querySelector('#login-form').addEventListener('submit', loginFormHandler);
+
+});

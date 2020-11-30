@@ -59,7 +59,7 @@ router.get('/:id', (req, res) => {
 });
 router.post('/', withAuth, (req, res) => {
     console.log("body is ");
-    console.log(req.body);
+    console.log(req.session.user_id);
     Product.create({
         product_name: req.body.product_name,
         model: req.body.model,

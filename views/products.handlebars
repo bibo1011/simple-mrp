@@ -89,7 +89,9 @@
 
 
 
-
+{{#unless products}}
+    <p style="color: red;">You have no products. Add new products by filling out the form above</p>
+{{/unless}}
 <ul class="collapsible popout">
     {{#each products}}
     {{#if @first}}

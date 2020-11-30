@@ -186,7 +186,7 @@ $(document).ready(function () {
 
       var product_name = $("#product_name").val();
       var model = $("#model").val();
-      var user_id = $("#user_id").val();
+      //var user_id = $("#user_id").val();
       var partNames = elem.val();
       var parts = [];
       partNames.forEach(part_name => {
@@ -199,11 +199,11 @@ $(document).ready(function () {
       var productInfo = JSON.stringify({
          "product_name": product_name,
          "model": model,
-         "user_id": parseInt(user_id),
+         //"user_id": parseInt(user_id),
          "isComplete": true,
          "parts": parts
       })
-      console.log(product_name, model, user_id, parts);
+      console.log(product_name, model, parts);
       $.ajax({
          method: "post",
          url: "/api/products",
@@ -217,7 +217,7 @@ $(document).ready(function () {
                $('#success-modal').modal({ dismissible: false });
                $('#success-modal').modal('open');
                $('#success').on('click', function () {
-                  location.reload();
+                   location.reload();
                })
 
             }
