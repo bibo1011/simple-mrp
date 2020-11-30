@@ -171,7 +171,7 @@ router.get('/products', withAuth, (req, res) => {
 });
 
 router.get("/overview" ,withAuth, (req, res) => {
-    res.render("overview")
+    res.render("overview", {loggedIn: req.session.loggedIn})
 })
 
 router.get('/', (req, res) => {
