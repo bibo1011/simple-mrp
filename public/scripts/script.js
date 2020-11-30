@@ -5,9 +5,6 @@ $(document).ready(function () {
 
     $('textarea#description, input#part_name, input#part_number').characterCounter();
 
-   // // Modal initialization
-   // $('.modal').modal();
-
 
    //===============================
    // trigger menu
@@ -110,6 +107,7 @@ $(document).ready(function () {
          })
             .then(data => {
                console.log(data);
+               document.location.reload();
                //if no data is deleted
                if (!data) {
                   console.log(data);

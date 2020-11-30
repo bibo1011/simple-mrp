@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Product, Part, ProductTag } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 router.get('/', (req, res) => {
     Product.findAll({
@@ -56,25 +57,10 @@ router.get('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
-router.post('/', (req, res) => {
-    /* req.body should look like this....
-        {
-            "product_name": "Mercedez",
-            "model": "GLA 450",
-            "user_email": "hameed@ucbmotors.com",
-            "parts":[
-                {"part_number":"20200-0002", "quantity":3},
-                {"part_number":"20200-0006", "quantity":3},
-                {"part_number":"20200-0004", "quantity":3},
-                {"part_number":"20200-0013", "quantity":3},
-                {"part_number":"20200-0012", "quantity":3}
-            ]
-        }
-        */
+router.post('/', withAuth, (req, res) => {
     console.log("body is ");
     console.log(req.session.user_id);
     Product.create({
-        // raw:true,
         product_name: req.body.product_name,
         model: req.body.model,
         user_id: req.session.user_id,

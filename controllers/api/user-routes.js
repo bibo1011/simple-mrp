@@ -3,7 +3,7 @@ const { User, Product, Part} = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
-        // attributes: { exclude: ['password'] }
+        attributes: { exclude: ['password'] }
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -23,10 +23,7 @@ router.get('/:id', (req, res) => {
                 model: Product,
                 attributes: [ 'id', 'product_name', 'model', 'created_at' ]
             },
-            // {
-            //     model: Part,
-            //     attributes:[ 'part_number', 'part_name', 'description']
-            // }
+
         ]
     })
     .then(dbUserData => {

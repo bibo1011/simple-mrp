@@ -249,9 +249,9 @@ textarea{
     padding: 40px;
 }
 #myChart{
-    padding-bottom: 20px;
-    height: 200px;
-    width: 200px;
+    padding: 20px;
+    height: 50%;
+    width: 50%;
     display: block;
 }
 

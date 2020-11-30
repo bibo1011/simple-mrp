@@ -171,7 +171,7 @@ router.get('/products', withAuth, (req, res) => {
 });
 
 router.get("/overview" ,withAuth, (req, res) => {
-    res.render("overview")
+    res.render("overview", {loggedIn: req.session.loggedIn})
 })
 
 router.get('/', (req, res) => {
@@ -213,13 +213,15 @@ router.get('/account', withAuth, (req, res) => {
     });
 });
 
-router.put('/users', (req, res) => {
+router.put('/users', withAuth, (req, res) => {
     console.log(req.body);
     User.update (
+        
         {
             password: req.body.password
         },
-        {
+        {   
+            individualHooks: true,
             where: {
                 id: req.body.id
             }
