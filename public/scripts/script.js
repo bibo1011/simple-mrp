@@ -107,6 +107,7 @@ $(document).ready(function () {
          })
             .then(data => {
                console.log(data);
+               document.location.reload();
                //if no data is deleted
                if (!data) {
                   console.log(data);

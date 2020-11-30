@@ -35,7 +35,12 @@
   You can contribute to this project by creating issues on this repository
 
   ## Test
-  https://simple-mrp-hameed1239.herokuapp.com/
+  Use Insomia Core or any desktop API client to test routes.
+  Use MySQL Workbench to verify and test database
+
+  Link to app: https://simple-mrp-hameed1239.herokuapp.com/
+
+  Screenshots: 
 
   ![Screenshot](/public/images/Capture1.PNG)
   ![Screenshot](/public/images/Capture2.PNG)
