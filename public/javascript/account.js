@@ -29,10 +29,5 @@ $(document).ready(function () {
         }
     }) 
 });
-// async function updatePW(event){
-//     event.preventDefault();
-//     document.querySelector('#Password').val().trim();
-//     console.log('its working button')
-// }
-// document.querySelector('#account').addEventListener('submit', updatePW);
+
 

@@ -5,9 +5,6 @@ $(document).ready(function () {
 
     $('textarea#description, input#part_name, input#part_number').characterCounter();
 
-   // // Modal initialization
-   // $('.modal').modal();
-
 
    //===============================
    // trigger menu

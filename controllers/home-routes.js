@@ -213,13 +213,15 @@ router.get('/account', withAuth, (req, res) => {
     });
 });
 
-router.put('/users', (req, res) => {
+router.put('/users', withAuth, (req, res) => {
     console.log(req.body);
     User.update (
+        
         {
             password: req.body.password
         },
-        {
+        {   
+            individualHooks: true,
             where: {
                 id: req.body.id
             }
